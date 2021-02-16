@@ -21,6 +21,18 @@ Manapság a vendéglátásban sok helyen papírra jegyzetelik a vendégek fogyas
 
 ## Képernyőterv
 
+ + A megrendelés rögzítésére alkalmas felület:
+ 
+![FullWebsite](https://github.com/Moss4t/AFP_TenGeri/blob/Funkspec01/Images/1.JPG)
+
++ A raktáron lévő termékek menedzselésére szolgáló felület:
+
+![FullWebsite](https://github.com/Moss4t/AFP_TenGeri/blob/Funkspec01/Images/2.JPG)
+
++ Ezen a felületen a napi megrendelések számát és a bevételeket láthatjuk dátummal ellátva: 
+
+![FullWebsite](https://github.com/Moss4t/AFP_TenGeri/blob/Funkspec01/Images/3.JPG)
+
 ## Adatmodell
 
 ## Forgatókönyv
