@@ -1,7 +1,7 @@
 # Funkcionális specifikáció
 
 ## Áttekintés
-Az alkalmazás lényege, hogy vendéglátásban a fogyasztásokat lehessen követni asztalonként, és a végén a gép számolja ki a teljes összeget ne nekünk kelljen bíbelődni vele.
+Webalkalmazásunkat úgy fejlesztettük ki, hogy könnyen használható legyen a vendéglátóipari munkához. Azoknak az embereknek fejlesztjük, akik felszolgálói munkakörben dolgoznak. Az alkalmazás használata fizetős. Az ő munkájuk segítésére, a tételek számontartására, az asztalok nyomonkövetésére, valamint a fogyasztások pontos meghatározására hozzuk létre, hogy segítse egy napi végösszeg meghatározását. Saját magának tudja szerkeszteni a felület aszerint, hogy milyen tételek vannak még raktáron, illetve milyen asztalok foglaltak és az esetleges új rendelések felvételét tudja intézni. Reméljük, hogy ez az alkalmazás segíti a pontos napi végösszeg kiszámolását és olyan segítséget nyújt, ami elnyeri a felhasználók tetszését. 
 
 ## Jelenlegi helyzet
 Az ötlet saját tapasztalatból jött létre. Nagy lenne az igény a gyorsabb, és egyszerűbb kiszolgálásnak, ahol nem megy el felesleges dolgokra az idő. 
