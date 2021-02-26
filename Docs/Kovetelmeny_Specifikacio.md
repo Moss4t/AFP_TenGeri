@@ -39,6 +39,28 @@ amelyeket később tudnak módosítani vagy akár törölni is.
 
 
 ## Követelménylista
+
+|    <b>Modul</b>              |    <b>ID</b>     |    <b>Megnevezés</b>                   |    <b>Leírás</b>                                                                                                                                                                                                                                       |
+|----------------------------|-----------|---------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| 
+|    Backend            |    <b>F1</b>     |    Adatbázis                     |   A webalkalmazás egy lokális adatbázist használ a rendelések és a raktáron lévő adatok tárolására.|
+|    Backend            |    <b>F2</b>     |    Rendelés felvétele            |   Az alkalmazás használatával lehetőségünk van egy adott rendelést felvinni a rendszerbe.       |
+|    Backend            |    <b>F3</b>     |    Rendelések listázása          |    A már felvitt rendeléseket nyomon tudjuk majd követni.                                        |
+|    Backend            |    <b>F4</b>     |    Rendelések  módosítása        |    Lehetőségünk van egy adott rendelést lezárni olya módon, hogy a hozzá tartozó státusz mezőt "fizetve" állítjuk.   |
+|    Backend            |    <b>F5</b>     |   Részletes rendelés megjelenítés    |    Amint egy asztalra kattintunk, egy külön felületen megjelenik a rendelés minden egyes részletével.    |                                                                                          
+|    Backend            |    <b>F6</b>     |    Raktáron levő termékek listázása   |    Az adatbázisban szereplő termékek nyomonkövethetősége végett szükséges.        |                 
+|    Backend            |    <b>F7</b>     |    Raktáron levő termékek törlése     |   Ha esetleg egy alapanyag már nem szükséges a továbbiakban akkor kitöröljük a rendszerből.   |
+|    Backend            |    <b>F8</b>     |    Raktáron levő termékek módosítása  |   Amennyiben egy alapanyag rossz információkkal rendelkezik ezt lehetőségünk van javítani.   |
+|    Backend            |    <b>F9</b>     |    Raktáron levő termékek hozzáadása  |    Ha egy termék kifogyóban van akkor ezzel a funkcióval a kívánt mennyiséget tudjuk megrendelni. |
+|    Backend            |    <b>F10</b>    |   Napi összegzés                      |   Minden egyes napi bevétel egy táblázatban lesz megjelenítve dátummal ellátva.   |
+|    Backend            |    <b>F11</b>    |    Havi összegzés                     |  Egy hónapon belöli konkrét bevétel megjelenítése egy táblázatban a hónap nevével feltüntetve.   |
+|    Backend            |    <b>F12</b>    |    Összegzések törlése                |  Amennyiben már nincs szükség a korábbi összegzési adatokra szimplán kitöröljük az adatbázisból.   |
+|    Frontend           |    <b>F13</b>    |    Rendelések felület                 |    Ez a felület szolgál a rendelések és a hozzá tartozó funkciók  megjelenítésére.           |
+|    Frontend           |    <b>F14</b>    |    Raktár felület                     |    A raktár készlet menedzseléséhez szükséges felület.   |
+|    Frontend           |    <b>F15</b>    |    Összegzés felület                  |   Az az oldal ahol egy táblázatban felsorolva láthatjuk a már korábban említett F10 és F11 azonosítóval ellátott funkció eredményeit.  |
+|    Frontend           |    <b>F16</b>    |   Navigációs bár                      |   Az alkalmazáson belüli könnyebb navigáció végett (Rendelések,Raktár,Összegzés,Logo) -val megjelölve.   |
+|    Frontend           |    <b>F17</b>    |   Responsive design                 |   Fontos, hogy a webalkalmazás egy kisebb méretű képernyőre is fell legyen készítve. |
+|    Frontend           |    <b>F18</b>    |    Modern UI elemek használata      |   A modern kinézet megalkotásához fontos, hogy a különböző elemek (Card,Dropdown List stb) és a színek is összhangban legyenek a végeredményben.  |
+
 ## Fogalomszótár
 
 
