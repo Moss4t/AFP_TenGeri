@@ -63,17 +63,17 @@ amelyeket később tudnak módosítani vagy akár törölni is.
 
 ## Fogalomszótár
 
-- MySQL: A MySQL egy többfelhasználós, többszálú, SQL-alapú relációs adatbázis-kezelő szerver.<br />
+<b>- MySQL</b>: A MySQL egy többfelhasználós, többszálú, SQL-alapú relációs adatbázis-kezelő szerver.<br />
 
-- Backend: A backend réteg feladata a front-end réteg felől érkező adatok feldolgozása, ill. a keletkezett eredmény a front-end számára történő visszajuttatása.<br />
+<b>- Backend</b>: A backend réteg feladata a front-end réteg felől érkező adatok feldolgozása, ill. a keletkezett eredmény a front-end számára történő visszajuttatása.<br />
 
-- Front-end: Egy adott rendszer legfelsőbb, a felhasználóval vagy a csatlakoztatott további rendszerrekkel a kapcsolatot tartó rétege.<br />
+<b>- Front-end</b>: Egy adott rendszer legfelsőbb, a felhasználóval vagy a csatlakoztatott további rendszerrekkel a kapcsolatot tartó rétege.<br />
 
-- User-interface (UI): A felhasználói felület (angolul user interface, röviden UI) egy berendezés (például a számítógép), vagy egy számítógépes program (például egy operációs rendszer) azon elemeinek összessége, amelyek a felhasználóval való kommunikációért felelősek, és a berendezés vagy program irányítását, vezérlését lehetővé teszik.<br />
+<b>- User-interface (UI)</b>: A felhasználói felület (angolul user interface, röviden UI) egy berendezés (például a számítógép), vagy egy számítógépes program (például egy operációs rendszer) azon elemeinek összessége, amelyek a felhasználóval való kommunikációért felelősek, és a berendezés vagy program irányítását, vezérlését lehetővé teszik.<br />
 
-- Spring: A Spring egy nyílt forráskódú, "inversion of control"-t megvalósító Java alkalmazás keretrendszer.<br />
+<b>- Spring</b>: A Spring egy nyílt forráskódú, "inversion of control"-t megvalósító Java alkalmazás keretrendszer.<br />
 
-- React: A React egy olyan JavaScript könyvtár, amelyet felhasználói felületek programozásához szoktak használni.<br />
+<b>- React</b>: A React egy olyan JavaScript könyvtár, amelyet felhasználói felületek programozásához szoktak használni.<br />
 
-- Responsive design: A responsive design egy olyan weboldal készítési eljárás, amely lehetőséget ad arra, hogy ugyanaz a weboldal eszköztől, operációs rendszertől, böngészőtől függetlenül bármilyen környezetben tökéletesen jelenjen meg.<br />
+<b>- Responsive design</b>: A responsive design egy olyan weboldal készítési eljárás, amely lehetőséget ad arra, hogy ugyanaz a weboldal eszköztől, operációs rendszertől, böngészőtől függetlenül bármilyen környezetben tökéletesen jelenjen meg.<br />
 
