@@ -16,6 +16,10 @@ Manapság a vendéglátásban sok helyen papírra jegyzetelik a vendégek fogyas
 Az alkalmazást javarészt a felszolgálók fogják kezelni. A webalkalmazás nem fog tartalmazni semmiféle bejelentkezési rendszert, hiszen egyidejűleg több felszolgáló fogja azt használni. A követelmény listában feltüntetett funkcionális és nem funkcionális követelményeknek megfelelően fog majd elkészülni. A felszolgálók fogják rögzíteni a rendeléseket, amelyeket később tudnak módosítani vagy akár törölni is.
 
 ## Használati esetek
++ Nem különböztetünk meg felhasználókat, így nincs szükség bejelentkező felületre, mint az alábbi ábra szemlélteti.
+<br>
+<img src="https://github.com/Moss4t/AFP_TenGeri/blob/main/Images/UseCase.png">
+
 
 ## Követelménylista
 [A Követelmény specifikációban kifejtettük korábban.](https://github.com/Moss4t/AFP_TenGeri/blob/main/Docs/Kovetelmeny_Specifikacio.md#Követelménylista)
@@ -39,3 +43,4 @@ Az alkalmazást javarészt a felszolgálók fogják kezelni. A webalkalmazás ne
 ## Forgatókönyv
 
 ## Fogalomszótár
+
