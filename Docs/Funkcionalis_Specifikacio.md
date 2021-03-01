@@ -13,7 +13,7 @@ A szoftver bárki számára elérhető, miután megtérítette az ehez tartozó 
 Manapság a vendéglátásban sok helyen papírra jegyzetelik a vendégek fogyasztását, amely nagyon sok időt elvesz, és káros a környezetnek. A végösszeg kiszámítása hosszú és macerás lehet, amíg az árlistáról megkeresik, és hozzáadják a számokat a teljes összeghez. Ennek kiküszöbölése érdekében szükség van egy olyan akalmazásra, amely minden asztalt elektronikusan követ, és autómatikusan összeadja a számokat, hogy időt és papírt spóroljunk vele. 
 
 ## Igényelt üzleti folyamatok modellje
-
+Az alkalmazást javarészt a felszolgálók fogják kezelni. A webalkalmazás nem fog tartalmazni semmiféle bejelentkezési rendszert, hiszen egyidejűleg több felszolgáló fogja azt használni. A követelmény listában feltüntetett funkcionális és nem funkcionális követelményeknek megfelelően fog majd elkészülni. A felszolgálók fogják rögzíteni a rendeléseket, amelyeket később tudnak módosítani vagy akár törölni is.
 
 ## Használati esetek
 
