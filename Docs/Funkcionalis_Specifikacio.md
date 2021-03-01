@@ -38,9 +38,9 @@ Az alkalmazást javarészt a felszolgálók fogják kezelni. A webalkalmazás ne
 
 ![FullWebsite](https://github.com/Moss4t/AFP_TenGeri/blob/Funkspec01/Images/3.JPG)
 
-## Adatmodell
-
 ## Forgatókönyv
+A pincér betölti az alkalmazást, miután előfizetett rá, így használatra kész lesz. A pincér kimegy az asztalhoz. A pincér felveszi a rendelést, melyet az alkalmazásban, a megfelelő asztalt kiválasztva felvezet. Az asztalra rákattintva tudja megtekinteni, hogy eddig az adott asztal mit fogyasztott, valamint módosítani (hozzáadni/eltávolítani) tudja ezt a rendelést. Ha a vendégek távozásra ítélik a helyzetet, akkor a "Fizet" gombra kattintva autómatikusan összegzi a gép a fogyasztást, valamint kiállítja a számlát, és menti az adatbázisba későbbi statisztikák lekérése érdekében. A gép a fogyasztás alapján kiszámolja, hogy raktáron mennyi termék maradt. Raktári készlet módosítását a pincér manuálisan kezeli, melyre külön felület van kialakítva. Itt van lehetőség hozzáadni, törölni és módosítani a készletet. 
 
 ## Fogalomszótár
-
+- <b>Termékkulcs: </b> A termékkulcs, vagy más néven szoftverkulcs, egy speciális szoftveralapú kulcs egy számítógépes programhoz. Igazolja, hogy a program másolata eredeti.
+- <b>Előfizetés: </b> Aki ezt az aplikációt használni akarja, a termékkulcsot fizetés ellenében kapja meg. Bármilyen fizetőszköznek megfelelő valutát elfogadunk.
