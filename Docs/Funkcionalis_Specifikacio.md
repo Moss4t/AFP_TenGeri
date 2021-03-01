@@ -18,6 +18,7 @@ Az alkalmazást javarészt a felszolgálók fogják kezelni. A webalkalmazás ne
 ## Használati esetek
 
 ## Követelménylista
+[A Követelmény specifikációban kifejtettük korábban.](https://github.com/Moss4t/AFP_TenGeri/blob/main/Docs/Kovetelmeny_Specifikacio.md#Követelménylista)
 
 ## Képernyőterv
 
