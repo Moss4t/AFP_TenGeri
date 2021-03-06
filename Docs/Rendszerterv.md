@@ -15,7 +15,13 @@ Mivel ez saját fejlesztésű alkalmazás, így kevés visszajelzésünk van, í
 Az oldal megfelel a Magyarországon érvényben lévő jogszabályoknak, különös tekintettel az adatkezelési (GDPR) előírásoknak, valamint az Innovációs és Technológiai Minisztérium ajánlásainak. 
 
 ## Fizikai környezet
-
+- A webalaklamazás egyaránt használható minden fajta erre alkalmas eszközön, mivel teljes mértékben reszponzív.
+- Nincsennek megvásárolt komponenseink
+- Fejlesztő eszközök:
+  - MySQL
+  - Spring
+  - React
+	
 ## Architekturális terv
 
 ## Adatbázis terv
