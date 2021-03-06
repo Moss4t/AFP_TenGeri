@@ -37,6 +37,15 @@ tudjuk biztosítani az alkalmazás gyors és megbízható működését egyarán
 ## Adatbázis terv
 
 ## Teszt terv
+A tesztterv célja a webalkalmazásunk teljes átvizsgálása mind Back-end mind Front-end szintjén.
+
+### Alfa teszt:
+
+Az alfa tesztünk célja a korábban megalkotott összes funkció teljes körű letesztelése, még az előtt, hogy a tesztelés következő fázisára lépnénk, ahol már a tényleges felhasználó visszajelzéseiből tudunk további esetleges hibákat kiküszöbölni. Időintervallumban meghatározva ez körülbelül egy teljes hetet fog igénybe venni majd.
+
+### Béta teszt:
+
+A béta teszt során a tényleges felhasználók végzik a program minden egyes funkciójának tesztelését amit egy esetleges hiba esetén képernyőképpel alátámasztva elküldi a fejlesztő csapatnak, így még a tényleges használat előtt fény derülhet néhány esetleges hibára amit még az alkalmazás működésbe helyezése előtt szükséges kijavítani. Akárcsak az alfa teszt esetében ennek a tesztnek is körülbelül egy teljes hét lesz az időtartama. 
 
 ## Telepítési terv
 Az appstore-ban megvásárolt terméket letöltjük és helyileg feltelepítjük az eszközön. Ezek után használatra kész a webalkalmazás.
