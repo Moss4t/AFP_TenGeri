@@ -30,6 +30,9 @@ A fejlesztéshez használt szoftverek és technológiák:
  - React, BootStrap (Front-end)
 	
 ## Architekturális terv
+Fontos megemlíteni, hogy a webalkalmazás működése egy bizonyos mennyiségű felhasználó vagy adatmennyiség megléte után kissé instabillá válhat gyorsaság szempontjából,
+ezért a szerver kapacitása folyamatosan fejlesztés alatt áll, hogy elkerüljük az efféle működésbeli ingadozásokat és a későbbiek folyamán problémamentesen 
+tudjuk biztosítani az alkalmazás gyors és megbízható működését egyaránt.
 
 ## Adatbázis terv
 
