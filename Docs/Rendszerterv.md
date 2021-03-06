@@ -18,12 +18,16 @@ Az főoldal menüjéből lehet navigálni az egész alkalmazáson belül. Amint 
 Az oldal megfelel a Magyarországon érvényben lévő jogszabályoknak, különös tekintettel az adatkezelési (GDPR) előírásoknak, valamint az Innovációs és Technológiai Minisztérium ajánlásainak. 
 
 ## Fizikai környezet
-- A webalaklamazás egyaránt használható minden fajta erre alkalmas eszközön, mivel teljes mértékben reszponzív.
-- Nincsennek megvásárolt komponenseink
-- Fejlesztő eszközök:
-  - MySQL
-  - Spring
-  - React
+Az alkalmazásunk készítése során nagy hangsúlyt fektetünk a responsive design megalkotására,
+ezzel máris előkészítve az alkalmazást egy akár kisebb felbontású eszközön történő problémamentes felhasználásra amihez csupán egy böngészőre van még szükség.
+Nincsennek megvásárolt komponenseink.
+
+A fejlesztéshez használt szoftverek és technológiák:
+ - WebStorm (Front-end)
+ - Intellijea IDEA Ultimate (Backend)
+ - MySQL (Adatbázis)
+ - Java Spring (Back-end)
+ - React, BootStrap (Front-end)
 	
 ## Architekturális terv
 
