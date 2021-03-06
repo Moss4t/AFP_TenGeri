@@ -32,3 +32,6 @@ Az oldal megfelel a Magyarországon érvényben lévő jogszabályoknak, külön
 Az appstore-ban megvásárolt terméket letöltjük és helyileg feltelepítjük az eszközön. Ezek után használatra kész a webalkalmazás.
 
 ## Karbantartási terv
+A mi oldalunkról nem vállalunk felelősséget, azért ha eltér a felhasználó által bevitt adatok a raktáron szereplő tételektől.
+- Az adatbázis frissítése valós tartalmakra a felhasználó dolga.
+- A verziószámnak megfelelő frissítések kiadása és esetleges bugfixek.
