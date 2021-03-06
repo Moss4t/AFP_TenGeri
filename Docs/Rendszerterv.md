@@ -29,5 +29,6 @@ Az oldal megfelel a Magyarországon érvényben lévő jogszabályoknak, külön
 ## Teszt terv
 
 ## Telepítési terv
+Az appstore-ban megvásárolt terméket letöltjük és helyileg feltelepítjük az eszközön. Ezek után használatra kész a webalkalmazás.
 
 ## Karbantartási terv
