@@ -36,6 +36,10 @@ tudjuk biztosítani az alkalmazás gyors és megbízható működését egyarán
 
 ## Adatbázis terv
 
+Az alkalmazást kiszolgáló adatbázis a következőképpen épül fel:
+<br>
+<img src="https://github.com/Moss4t/AFP_TenGeri/blob/main/Images/adatb%C3%A1zis_terv.png">
+
 ## Teszt terv
 A tesztterv célja a webalkalmazásunk teljes átvizsgálása mind Back-end mind Front-end szintjén.
 
