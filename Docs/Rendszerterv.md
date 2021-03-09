@@ -20,7 +20,7 @@ Az oldal megfelel a Magyarországon érvényben lévő jogszabályoknak, külön
 ## Fizikai környezet
 Az alkalmazásunk készítése során nagy hangsúlyt fektetünk a responsive design megalkotására,
 ezzel máris előkészítve az alkalmazást egy akár kisebb felbontású eszközön történő problémamentes felhasználásra amihez csupán egy böngészőre van még szükség.
-Nincsennek megvásárolt komponenseink.
+Nincsenek megvásárolt komponenseink.
 
 A fejlesztéshez használt szoftverek és technológiák:
  - WebStorm (Front-end)
@@ -52,7 +52,7 @@ Az alfa tesztünk célja a korábban megalkotott összes funkció teljes körű 
 A béta teszt során a tényleges felhasználók végzik a program minden egyes funkciójának tesztelését amit egy esetleges hiba esetén képernyőképpel alátámasztva elküldi a fejlesztő csapatnak, így még a tényleges használat előtt fény derülhet néhány esetleges hibára amit még az alkalmazás működésbe helyezése előtt szükséges kijavítani. Akárcsak az alfa teszt esetében ennek a tesztnek is körülbelül egy teljes hét lesz az időtartama. 
 
 ## Telepítési terv
-Az appstore-ban megvásárolt terméket letöltjük és helyileg feltelepítjük az eszközön. Ezek után használatra kész a webalkalmazás.
+Mivel egy webalkalmazásról beszélünk így a használatához csupán megfelelő internet kapcsolat és egy böngésző kell, semmilyen más külső szoftverre nincs szükségünk!
 
 ## Karbantartási terv
 A mi oldalunkról nem vállalunk felelősséget, azért ha eltér a felhasználó által bevitt adatok a raktáron szereplő tételektől.
