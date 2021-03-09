@@ -9,7 +9,7 @@ A webalkalmazásunkat azok számára fejlesztjük, akik a vendéglátásban fels
 <img src="https://github.com/Moss4t/AFP_TenGeri/blob/main/Images/Menetrend.jpg">
 
 ## Üzleti folyamatok
-Mivel ez saját fejlesztésű alkalmazás, így kevés visszajelzésünk van, így minden javaslatot alaposan átnézünk és ezek alapján kezdjük el fejleszteni az aplikációt. Saját gondolatmenetünket finomítva tesztelhető verziót készítünk és gondosan ellenőrizzük a funkciók működését, melyek elkészülte után remélhetőleg a vágyálomrendszerhez közel hasonló végkimenetelünk lesz. A webalkalmazás kizárólag egy helyiség adatait tartalmazza egy olyan felületen, amivel könnyen formálhatjuk az asztalok számát igény szerint. Ezek a szolgáltatások fizetősek, ami annyit tesz, hogy az appstore-ban csak vásárlás után vehetők igénybe.
+Az alkalmazás alapgondolatának megalkotója az egyik fejlesztő kollégánk, akinek saját tapasztalatai a vendéglátásban szerzett területeken valamint további ilyen területen dolgozó személy elmondása megerősíti, hogy egy ilyen jellegű alkalmazás megléte minden szempontból előnyt jelent. Másik szempontból nézve a dolgot, nem igazán mondható ehhez hasonló webes alkalmazás megléte a jelenlegi piacon ami kimondottan a pincérek és tulajok számára nyújt előnyt.
 
 ## Funkcionális terv
 Az főoldal menüjéből lehet navigálni az egész alkalmazáson belül. Amint a [képernyőterveken](https://github.com/Moss4t/AFP_TenGeri/blob/main/Docs/Funkcionalis_Specifikacio.md#Képernyőterv) is láthatjuk tudunk megrendeléseket rögzíteni asztalokhoz, a tételeket asztalonként, valamint a nap végén is összegezhetjük, és tudjuk a raktártételeket is módosítani. 
@@ -24,7 +24,7 @@ Nincsennek megvásárolt komponenseink.
 
 A fejlesztéshez használt szoftverek és technológiák:
  - WebStorm (Front-end)
- - Intellijea IDEA Ultimate (Backend)
+ - IntelliJ IDEA Ultimate (Backend)
  - MySQL (Adatbázis)
  - Java Spring (Back-end)
  - React, BootStrap (Front-end)
