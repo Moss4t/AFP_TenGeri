@@ -39,6 +39,35 @@ tudjuk biztosítani az alkalmazás gyors és megbízható működését egyarán
 Az alkalmazást kiszolgáló adatbázis a következőképpen épül fel:
 <br>
 <img src="https://github.com/Moss4t/AFP_TenGeri/blob/main/Images/adatb%C3%A1zis_terv.png">
++ Summary tábla
+
+| Mező név | Típus | Megszorítás |
+|----------|-------|-------------|
+| SummaryID | int(11) | PrimaryKey, AutoIncrement |
+| RendelesCount | int(11) | |
+| Date | datetime | ForeignKey |
+| Summary | double | |
+
++ Rendeles tábla
+
+| Mező név | Típus | Megszorítás |
+|----------|-------|-------------|
+| RendID | int(11) | PrimaryKey, AutoIncrement |
+| ProdName | varchar(255) | ForeignKey |
+| TableID | int(11) | UNIQUE |
+| Date | datetime | ForeignKey, AutoIncrement |
+| Price | double | |
+| Status | enum | Active, Closed |
+
++ Raktar tábla
+
+| Mező név | Típus | Megszorítás |
+|----------|-------|-------------|
+| ProdID | int(11) | PrimaryKey, AutoIncrement |
+| ProdName | varchar(255) | ForeignKey |
+| ProdCount | double | |
+| WarehouseName | varchar(255) | |
+
 
 ## Teszt terv
 A tesztterv célja a webalkalmazásunk teljes átvizsgálása mind Back-end mind Front-end szintjén.
