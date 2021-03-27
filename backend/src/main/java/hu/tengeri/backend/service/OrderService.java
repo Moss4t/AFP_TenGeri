@@ -13,8 +13,34 @@ public class OrderService {
     @Autowired
     OrderRepository orderRepository;
 
+    //read
     public List<Order> getAllData()
     {
         return orderRepository.findAll();
+    }
+    public Order getOrderById(int id){
+        return orderRepository.findById(id).orElse(null);
+    }
+
+    //create
+    public Order createOrder(Order order){
+        return orderRepository.save(order);
+    }
+
+    //delete
+    public String deleteOrder(int id){
+        orderRepository.deleteById(id);
+        return "Order removed!" +id;
+    }
+
+    //update
+    public Order updateOrder(Order order){
+        Order existingOrder = orderRepository.findById(order.getRendID()).orElse(null);
+        existingOrder.setProdName(order.getProdName());
+        existingOrder.setDate(order.getDate());
+        existingOrder.setPrice(order.getPrice());
+        existingOrder.setStatus(order.getStatus());
+        existingOrder.setTableID(order.getTableID());
+        return orderRepository.save(existingOrder);
     }
 }
