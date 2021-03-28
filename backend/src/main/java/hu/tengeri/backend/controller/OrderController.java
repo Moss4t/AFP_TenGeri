@@ -1,5 +1,6 @@
 package hu.tengeri.backend.controller;
 
+import com.sun.jdi.InvalidLineNumberException;
 import hu.tengeri.backend.model.Order;
 import hu.tengeri.backend.service.OrderService;
 import io.swagger.annotations.Api;
@@ -34,22 +35,30 @@ public class OrderController {
         }
     }
 
-    @GetMapping("/getOrderById")
-    public Order getOrderById(int id){
-        return orderService.getOrderById(id);
+    @GetMapping(value = "/getOrderById/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ApiOperation("Get data by id from database with JSON format")
+    public Order getOrderById(@PathVariable int id){
+            return orderService.getOrderById(id);
     }
 
-    @PostMapping("/createOrder")
+    @PostMapping(value = "/createOrder", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ApiOperation("Creat data to database")
     public Order createOrder(@RequestBody Order order){
         return orderService.createOrder(order);
     }
 
-    @PutMapping("/updateOrder")
-    public Order updateOrder(@RequestBody Order order){
+    @PutMapping(value = "/updateOrder/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ApiOperation("Change data in database")
+    public Order updateOrder(@RequestBody Order order, @PathVariable int id){
+        Order existingOrder = orderService.getOrderById(id);
+        if(existingOrder == null){
+            throw new NoSuchElementException();
+        }
         return orderService.updateOrder(order);
     }
 
-    @DeleteMapping("/deleteOrder/{id}")
+    @DeleteMapping(value = "/deleteOrder/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ApiOperation("Delete data from database")
     public String deleteOrder(@PathVariable int id){
         return orderService.deleteOrder(id);
     }
