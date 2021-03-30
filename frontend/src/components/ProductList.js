@@ -23,6 +23,11 @@ class ProductList extends React.Component{
             });
     }
 
+    deleteRow(id,e){
+        axios.delete("http://localhost:8081/orders/deleteOrder/" + id)
+            .then(resp => resp.data)
+    }
+
     render(){
         return(
             <div align="center">
@@ -34,6 +39,8 @@ class ProductList extends React.Component{
                         <th>ProdName</th>
                         <th>ProdCount</th>
                         <th>WarehouseName</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -47,6 +54,8 @@ class ProductList extends React.Component{
                                 <td className={"align-middle"}>{prod.prodName}</td>
                                 <td className={"align-middle"}>{prod.prodCount}</td>
                                 <td className={"align-middle"}>{prod.warehouseName}</td>
+                                <td className={"align-middle"}><button>Edit</button></td>
+                                <td className={"align-middle"}><button onClick={(e) => this.deleteRow(prod.prodID,e)}>Delete</button></td>
                             </tr>
                         ))
                     }

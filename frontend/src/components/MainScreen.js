@@ -3,6 +3,7 @@ import OrderList from "./OrderList";
 import {Button} from "react-bootstrap";
 import SummaryList from "./SummaryList";
 import ProductList from "./ProductList";
+import CreateOrder from "./CreateOrder";
 
 
 export default class MainScreen extends React.Component{
@@ -12,9 +13,10 @@ export default class MainScreen extends React.Component{
         this.onClick = this.onClick.bind(this)
         this.state = {
             arr: [
-                {name: "OrderList", isActive: true, comp: <OrderList/>},
-                {name: "SummaryList", isActive: true, comp: <SummaryList/>},
-                {name: "ProductList", isActive: true, comp: <ProductList/>}
+                {name: "OrderList", isActive: false, comp: <OrderList/>},
+                {name: "SummaryList", isActive: false, comp: <SummaryList/>},
+                {name: "ProductList", isActive: false, comp: <ProductList/>},
+                {name: "CreateOrder", isActive: false, comp: <CreateOrder/>}
             ]
         };
     }

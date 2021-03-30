@@ -22,6 +22,11 @@ class SummaryList extends React.Component{
             });
     }
 
+    deleteRow(id, e){
+        axios.delete("http://localhost:8081/summary/deleteSummary/" + id)
+            .then(resp => resp.data)
+    }
+
     render() {
         return(
             <div align="center">
@@ -33,6 +38,8 @@ class SummaryList extends React.Component{
                         <th>OrderCount</th>
                         <th>Date</th>
                         <th>Summary</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -41,11 +48,13 @@ class SummaryList extends React.Component{
                             <td colSpan="6"> No Summaries Aviable</td>
                         </tr> :
                         this.state.summaries.map((sum)=> (
-                            <tr key={sum.SumId} align="center">
+                            <tr key={sum.sumID} align="center">
                                 <td className={"align-middle"}>{sum.sumID}</td>
                                 <td className={"align-middle"}>{sum.ordCount}</td>
                                 <td className={"align-middle"}>{sum.date}</td>
                                 <td className={"align-middle"}>{sum.summary}</td>
+                                <td className={"align-middle"}><button>Edit</button></td>
+                                <td className={"align-middle"}><button onClick={(e) => this.deleteRow(sum.sumID,e)}>Delete</button></td>
                             </tr>
                         ))
                     }

@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, {Component} from "react";
+import React from "react";
 import {Table} from "react-bootstrap";
 
 class OrderList extends React.Component {
@@ -25,6 +25,11 @@ class OrderList extends React.Component {
             });
     };
 
+    deleteRow(id,e){
+        axios.delete("http://localhost:8081/orders/deleteOrder/" + id)
+            .then(resp => resp.data)
+    }
+
     render() {
         return(
 
@@ -39,6 +44,8 @@ class OrderList extends React.Component {
                     <th>Date</th>
                     <th>Price</th>
                     <th>Status</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -54,6 +61,8 @@ class OrderList extends React.Component {
                             <td className={"align-middle"}>{ord.date}</td>
                             <td className={"align-middle"}>{ord.price} Ft</td>
                             <td className={"align-middle"}>{ord.status}</td>
+                            <td className={"align-middle"}><button>Edit</button></td>
+                            <td className={"align-middle"}><button onClick={(e) => this.deleteRow(ord.rendID,e)}>Delete</button></td>
                         </tr>
                     ))
                 }
