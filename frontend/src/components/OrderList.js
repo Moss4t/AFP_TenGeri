@@ -1,9 +1,8 @@
-
 import axios from "axios";
 import React, {Component} from "react";
 import {Table} from "react-bootstrap";
 
-export default class OrderList extends Component {
+class OrderList extends React.Component {
 
     constructor(props) {
         super(props);
@@ -65,3 +64,4 @@ export default class OrderList extends Component {
         )
     }
 }
+export default OrderList;
