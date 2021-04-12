@@ -5,7 +5,7 @@ import {Table} from "react-bootstrap";
 class SummaryList extends React.Component{
     constructor(props) {
         super(props);
-        this.state ={
+        this.state = {
             summaries: []
         }
     }
@@ -45,16 +45,16 @@ class SummaryList extends React.Component{
                     <tbody>
                     {this.state.summaries.length === 0 ?
                         <tr align="center">
-                            <td colSpan="6"> No Summaries Aviable</td>
+                            <td colSpan="6"> No Summaries Available!</td>
                         </tr> :
                         this.state.summaries.map((sum)=> (
-                            <tr key={sum.sumID} align="center">
-                                <td className={"align-middle"}>{sum.sumID}</td>
+                            <tr key={sum.sumId} align="center">
+                                <td className={"align-middle"}>{sum.sumId}</td>
                                 <td className={"align-middle"}>{sum.ordCount}</td>
                                 <td className={"align-middle"}>{sum.date}</td>
                                 <td className={"align-middle"}>{sum.summary}</td>
                                 <td className={"align-middle"}><button>Edit</button></td>
-                                <td className={"align-middle"}><button onClick={(e) => this.deleteRow(sum.sumID,e)}>Delete</button></td>
+                                <td className={"align-middle"}><button onClick={(e) => this.deleteRow(sum.sumId,e)}>Delete</button></td>
                             </tr>
                         ))
                     }

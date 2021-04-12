@@ -24,10 +24,9 @@ public class Order {
     private Double price;
 
     @Column(name = "Status")
-    @Enumerated(EnumType.STRING)
-    private Status status;
+    private String status;
 
-    public Order(String prodName, Integer tableID, String date, Double price, Status status) {
+    public Order(String prodName, Integer tableID, String date, Double price, String status) {
         this.prodName = prodName;
         this.tableID = tableID;
         this.date = date;
@@ -77,11 +76,11 @@ public class Order {
         this.price = price;
     }
 
-    public Status getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(Status status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 

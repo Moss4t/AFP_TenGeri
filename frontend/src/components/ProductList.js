@@ -46,11 +46,11 @@ class ProductList extends React.Component{
                     <tbody>
                     {this.state.products.length === 0 ?
                         <tr align="center">
-                            <td colSpan="6">No Products Aviable!</td>
+                            <td colSpan="6">No Products Available!</td>
                         </tr> :
                         this.state.products.map((prod) => (
-                            <tr key={prod.prodID} align="center">
-                                <td className={"align-middle"}>{prod.prodID}</td>
+                            <tr key={prod.prodId} align="center">
+                                <td className={"align-middle"}>{prod.prodId}</td>
                                 <td className={"align-middle"}>{prod.prodName}</td>
                                 <td className={"align-middle"}>{prod.prodCount}</td>
                                 <td className={"align-middle"}>{prod.warehouseName}</td>

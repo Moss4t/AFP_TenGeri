@@ -3,7 +3,9 @@ import OrderList from "./OrderList";
 import {Button} from "react-bootstrap";
 import SummaryList from "./SummaryList";
 import ProductList from "./ProductList";
-import CreateOrder from "./CreateOrder";
+import Order from "./Order";
+import Summary from "./Summary";
+import Product from "./Product";
 
 
 export default class MainScreen extends React.Component{
@@ -16,7 +18,9 @@ export default class MainScreen extends React.Component{
                 {name: "OrderList", isActive: false, comp: <OrderList/>},
                 {name: "SummaryList", isActive: false, comp: <SummaryList/>},
                 {name: "ProductList", isActive: false, comp: <ProductList/>},
-                {name: "CreateOrder", isActive: false, comp: <CreateOrder/>}
+                {name: "Order", isActive: false, comp: <Order/>},
+                {name: "Summary", isActive: false, comp: <Summary />},
+                {name: "Product", isActive: false, comp: <Product />}
             ]
         };
     }

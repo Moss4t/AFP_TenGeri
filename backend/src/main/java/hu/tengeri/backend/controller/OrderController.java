@@ -6,11 +6,12 @@ import hu.tengeri.backend.service.OrderService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-import java.util.NoSuchElementException;
+import java.util.*;
 
 @RestController
 @RequestMapping(value = "/orders")
@@ -61,5 +62,12 @@ public class OrderController {
     @ApiOperation("Delete data from database")
     public String deleteOrder(@PathVariable int id){
         return orderService.deleteOrder(id);
+    }
+
+    @GetMapping(value = "/category",produces = MediaType.APPLICATION_JSON_VALUE)
+    @ApiOperation("Get category for orders")
+    public ResponseEntity<Set<String>> findAllCategoryForProduct()
+    {
+        return new ResponseEntity<>(new TreeSet<>(Arrays.asList("Active", "Closed")), HttpStatus.OK);
     }
 }

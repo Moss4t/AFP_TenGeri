@@ -55,7 +55,7 @@ public class Warehouse {
     public Warehouse(String prodName, Double prodCount, String warehouseName){
         this.prodName = prodName;
         this.prodCount = prodCount;
-        this.prodName = prodName;
+        this.warehouseName = warehouseName;
     }
 
     public Warehouse() {}
