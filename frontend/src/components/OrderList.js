@@ -1,6 +1,7 @@
 import axios from "axios";
 import React from "react";
 import {Table} from "react-bootstrap";
+import {Link} from "react-router-dom";
 
 class OrderList extends React.Component {
 
@@ -61,7 +62,7 @@ class OrderList extends React.Component {
                             <td className={"align-middle"}>{ord.date}</td>
                             <td className={"align-middle"}>{ord.price} Ft</td>
                             <td className={"align-middle"}>{ord.status}</td>
-                            <td className={"align-middle"}><button>Edit</button></td>
+                            <td className={"align-middle"}><button> <Link to={"editOrder/" +ord.rendID}> Edit</Link></button></td>
                             <td className={"align-middle"}><button onClick={(e) => this.deleteRow(ord.rendID,e)}>Delete</button></td>
                         </tr>
                     ))

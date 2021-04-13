@@ -8,6 +8,7 @@ import {Row, Container, Col} from "react-bootstrap";
 import OrderList from "./components/OrderList";
 import ProductList from "./components/ProductList";
 import SummaryList from "./components/SummaryList";
+import EditOrder from "./components/EditOrder";
 
  class App extends Component {
 
@@ -22,6 +23,7 @@ import SummaryList from "./components/SummaryList";
                           <Route path="/OrderList" exact component={OrderList}/>
                           <Route path="/ProductList" exact component={ProductList}/>
                           <Route path="/SummaryList" exact component={SummaryList}/>
+                          <Route path="/editOrder/:id" exact component={EditOrder}/>
 
                       </Switch>
                   </Col>
