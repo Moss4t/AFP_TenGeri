@@ -50,6 +50,7 @@ export default class Order extends Component
             .then(response => {
                 if (response.data != null)
                 {
+                    setTimeout(() => this.orderList(),3000);
                     console.log(response.data)
                 }
                 else
@@ -59,6 +60,10 @@ export default class Order extends Component
             });
         this.setState(this.initialState);
     };
+
+    orderList = () => {
+        return this.props.history.push("/orderList")
+    }
 
     orderChange = event =>
     {

@@ -1,4 +1,4 @@
-import {Component} from "react";
+import React, {Component} from "react";
 import {Button, Col, Form} from "react-bootstrap";
 import axios from "axios";
 
@@ -37,6 +37,13 @@ export default class EditProduct extends Component{
         this.setState({[event.target.name]:event.target.value});
     };
 
+    componentDidMount() {
+        const productId =+ this.props.match.params.prodId;
+        if(productId) {
+            this.findProductById(productId);
+        }
+    }
+
     updateProduct = event =>
     {
         event.preventDefault();
@@ -60,6 +67,10 @@ export default class EditProduct extends Component{
         this.setState(this.initialState)
 
     };
+
+    pruductList = () => {
+        return this.props.history.push("/productList")
+    }
 
     render(){
         const {prodName, prodCount, warehouseName} = this.state;
@@ -108,6 +119,10 @@ export default class EditProduct extends Component{
                 <br/>
                 <Button size={"sm"} variant="success" type="submit">
                     Save
+                </Button>
+                &nbsp;&nbsp;
+                <Button size={"sm"} variant="primary" type="submit" onClick={this.productList.bind}>
+                    Back
                 </Button>
             </Form>
         )

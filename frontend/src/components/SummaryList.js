@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import {Table} from "react-bootstrap";
+import {Link} from "react-router-dom";
 
 class SummaryList extends React.Component{
     constructor(props) {
@@ -53,7 +54,7 @@ class SummaryList extends React.Component{
                                 <td className={"align-middle"}>{sum.ordCount}</td>
                                 <td className={"align-middle"}>{sum.date}</td>
                                 <td className={"align-middle"}>{sum.summary}</td>
-                                <td className={"align-middle"}><button>Edit</button></td>
+                                <td className={"align-middle"}><button><Link to={"editSummary/" +sum.sumId}>Edit </Link></button></td>
                                 <td className={"align-middle"}><button onClick={(e) => this.deleteRow(sum.sumId,e)}>Delete</button></td>
                             </tr>
                         ))

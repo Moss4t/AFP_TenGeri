@@ -9,6 +9,11 @@ import OrderList from "./components/OrderList";
 import ProductList from "./components/ProductList";
 import SummaryList from "./components/SummaryList";
 import EditOrder from "./components/EditOrder";
+import Order from "./components/Order";
+import Product from "./components/Product";
+import Summary from "./components/Summary";
+import EditSummary from "./components/EditSummary";
+import EditProduct from "./components/EditProduct";
 
  class App extends Component {
 
@@ -24,6 +29,11 @@ import EditOrder from "./components/EditOrder";
                           <Route path="/ProductList" exact component={ProductList}/>
                           <Route path="/SummaryList" exact component={SummaryList}/>
                           <Route path="/editOrder/:id" exact component={EditOrder}/>
+                          <Route path="/editSummary/:id" exact component={EditSummary}/>
+                          <Route path="/editProduct/:id" exact component={EditProduct}/>
+                          <Route path="/createOrder" exact component={Order}/>
+                          <Route path="/createSummary" exact component={Summary}/>
+                          <Route path="/createProduct" exact component={Product}/>
 
                       </Switch>
                   </Col>

@@ -1,4 +1,4 @@
-import {Component} from "react";
+import React, {Component} from "react";
 import axios from "axios";
 import {Button, Col, Form} from "react-bootstrap";
 
@@ -62,6 +62,10 @@ export default class EditSummary extends Component{
         this.setState(this.initialState);
     };
 
+    summaryList = () => {
+        return this.props.history.push("/summaryList")
+    }
+
     render() {
         const {ordCount, date, summary} = this.state;
         return(
@@ -109,6 +113,10 @@ export default class EditSummary extends Component{
                 <br/>
                 <Button size={"sm"} variant="success" type="submit">
                     Save
+                </Button>
+                &nbsp;&nbsp;
+                <Button size={"sm"} variant="primary" type="submit" onClick={this.summaryList.bind()}>
+                    Back
                 </Button>
             </Form>
         )

@@ -39,6 +39,7 @@ export default class Summary extends Component{
         axios.post("http://localhost:8081/summary/createSummary", summary)
             .then(response => {
                 if(response.data != null){
+                    setTimeout(() => this.summaryList(),3000);
                     console.log(response.data)
                 }
                 else{
@@ -47,6 +48,10 @@ export default class Summary extends Component{
             });
         this.setState(this.initialState);
     };
+
+    summaryList = () => {
+        return this.props.history.push("/summaryList")
+    }
 
     summaryChange = event => {
         this.setState({[event.target.name]:event.target.value});

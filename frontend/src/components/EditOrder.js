@@ -91,7 +91,7 @@ export default class EditOrder extends Component{
     }
 
     render() {
-        const {prodName, price, status, tableID, date} = this.state;
+        const {prodName, price, status, date, tableID } = this.state;
         return(
             <Form onSubmit={this.updateOrder} id={"OrderForms"} >
                 <Form.Row>

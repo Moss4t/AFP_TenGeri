@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import {Table} from "react-bootstrap";
+import {Link} from "react-router-dom";
 
 class ProductList extends React.Component{
 
@@ -24,7 +25,7 @@ class ProductList extends React.Component{
     }
 
     deleteRow(id,e){
-        axios.delete("http://localhost:8081/orders/deleteOrder/" + id)
+        axios.delete("http://localhost:8081/warehouse/deleteProd/" + id)
             .then(resp => resp.data)
     }
 
@@ -54,8 +55,8 @@ class ProductList extends React.Component{
                                 <td className={"align-middle"}>{prod.prodName}</td>
                                 <td className={"align-middle"}>{prod.prodCount}</td>
                                 <td className={"align-middle"}>{prod.warehouseName}</td>
-                                <td className={"align-middle"}><button>Edit</button></td>
-                                <td className={"align-middle"}><button onClick={(e) => this.deleteRow(prod.prodID,e)}>Delete</button></td>
+                                <td className={"align-middle"}><button><Link to={"editProduct/" +prod.prodId}>Edit</Link></button></td>
+                                <td className={"align-middle"}><button onClick={(e) => this.deleteRow(prod.prodId,e)}>Delete</button></td>
                             </tr>
                         ))
                     }

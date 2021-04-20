@@ -48,6 +48,7 @@ export default class Product extends Component{
             .then(response => {
                 if(response.data != null)
                 {
+                    setTimeout(() => this.productList(),3000);
                     console.log(response.data)
                 }
                 else
@@ -61,6 +62,10 @@ export default class Product extends Component{
     productChange = event => {
         this.setState({[event.target.name]:event.target.value});
     };
+
+    productList = () => {
+        return this.props.history.push("/productList")
+    }
 
     render(){
         const {prodName, prodCount, warehouseName} = this.state;
