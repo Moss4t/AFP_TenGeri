@@ -1,0 +1,10 @@
+INSERT INTO `restaurant`.`summary` (`sumid`, `date`, `order_count`, `summary`) VALUES ('1', '2021.04.21', '1', '7453');
+INSERT INTO `restaurant`.`summary` (`sumid`, `date`, `order_count`, `summary`) VALUES ('2', '2021.04.22', '2', '11200');
+INSERT INTO `restaurant`.`summary` (`sumid`, `date`, `order_count`, `summary`) VALUES ('3', '2021.04.21', '3', '16668');
+INSERT INTO `restaurant`.`summary` (`sumid`, `date`, `order_count`, `summary`) VALUES ('4', '2021.04.21', '4', '22320');
+INSERT INTO `restaurant`.`summary` (`sumid`, `date`, `order_count`, `summary`) VALUES ('5', '2021.04.22', '1', '9431');
+INSERT INTO `restaurant`.`summary` (`sumid`, `date`, `order_count`, `summary`) VALUES ('6', '2021.04.21', '2', '13220');
+INSERT INTO `restaurant`.`summary` (`sumid`, `date`, `order_count`, `summary`) VALUES ('7', '2021.04.22', '3', '18468');
+INSERT INTO `restaurant`.`summary` (`sumid`, `date`, `order_count`, `summary`) VALUES ('8', '2021.04.21', '4', '28664');
+INSERT INTO `restaurant`.`summary` (`sumid`, `date`, `order_count`, `summary`) VALUES ('9', '2021.04.22', '1', '6750');
+INSERT INTO `restaurant`.`summary` (`sumid`, `date`, `order_count`, `summary`) VALUES ('10', '2021.04.21', '2', '17730');
