@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 import axios from "axios";
 import {Button, Col, Form} from "react-bootstrap";
-import {Link} from "react-router-dom";
 
 
 export default class EditOrder extends Component{
@@ -20,7 +19,7 @@ export default class EditOrder extends Component{
     };
 
     componentDidMount() {
-        const orderID =+ this.props.match.params.rendID;
+        const orderID =+ this.props.match.params.id;
         if(orderID) {this.findOrderByID(orderID);}
         this.findAllStatus();
     }
@@ -47,14 +46,18 @@ export default class EditOrder extends Component{
                         price: response.data.price,
                         date: response.data.date,
                         status: response.data.status,
-                        rendId: response.data.rendId,
-                        tableId: response.data.tableId
+                        rendID: response.data.rendID,
+                        tableID: response.data.tableID
                     });
                 }
             }).catch((error) => {
-                console.error("Error - " + error);
+            console.error("Error - " + error);
         });
     };
+
+    orderList = () => {
+        return this.props.history.push("/orderList")
+    }
 
     orderChange = event =>
     {
@@ -70,7 +73,8 @@ export default class EditOrder extends Component{
             date: this.state.date,
             status: this.state.status,
             rendID: this.state.rendID,
-            tableID: this.state.tableID
+            tableID: this.state.tableID,
+
         };
         axios.put("http://localhost:8081/orders/updateOrder/" +order.rendID ,order)
             .then(response => {

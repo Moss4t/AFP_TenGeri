@@ -68,6 +68,6 @@ public class OrderController {
     @ApiOperation("Get category for orders")
     public ResponseEntity<Set<String>> findAllCategoryForProduct()
     {
-        return new ResponseEntity<>(new TreeSet<>(Arrays.asList("Active", "Closed")), HttpStatus.OK);
+        return new ResponseEntity<>(new TreeSet<>(Arrays.asList("ACTIVE", "CLOSED")), HttpStatus.OK);
     }
 }

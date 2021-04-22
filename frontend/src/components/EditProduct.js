@@ -14,15 +14,23 @@ export default class EditProduct extends Component{
     };
 
     initialState = {
-        prodId:'', prodName: '', prodCount: '', warehouseName: ''
+        id:'', prodID:'', prodName: '', prodCount: '', warehouseName: ''
     };
+
+    componentDidMount() {
+        const productId =+ this.props.match.params.id;
+        if(productId) {
+            this.findProductById(productId);
+        }
+    }
 
     findProductById = (productId) => {
         axios.get("http://localhost:8081/warehouse/getProdById" +productId)
             .then (response => {
                 if(response.data != null) {
+                    console.log(response.data)
                     this.setState( {
-                        prodId: response.data.prodId,
+                        prodID: response.data.prodID,
                         prodName: response.data.prodName,
                         prodCount: response.data.prodCount,
                         warehouseName: response.data.warehouseName
@@ -37,12 +45,7 @@ export default class EditProduct extends Component{
         this.setState({[event.target.name]:event.target.value});
     };
 
-    componentDidMount() {
-        const productId =+ this.props.match.params.prodId;
-        if(productId) {
-            this.findProductById(productId);
-        }
-    }
+
 
     updateProduct = event =>
     {
@@ -68,7 +71,7 @@ export default class EditProduct extends Component{
 
     };
 
-    pruductList = () => {
+    productList = () => {
         return this.props.history.push("/productList")
     }
 
@@ -121,7 +124,7 @@ export default class EditProduct extends Component{
                     Save
                 </Button>
                 &nbsp;&nbsp;
-                <Button size={"sm"} variant="primary" type="submit" onClick={this.productList.bind}>
+                <Button size={"sm"} variant="primary" type="submit" onClick={this.productList.bind()}>
                     Back
                 </Button>
             </Form>

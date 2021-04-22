@@ -12,22 +12,6 @@ export default class Summary extends Component{
     }
     initialState = { sumId:'', ordCount:'', date:'', summary:''};
 
-    componentDidMount() {
-        this.findAllStatus();
-    }
-
-    findAllStatus = () => {
-       axios.get("http://localhost:8081/summary/list")
-           .then(response => response.data)
-           .then((data) => {
-               this.setState({
-                   statuses: [{value:'', display:'SelectStatus'}]
-                       .concat(data.map(status => {
-                           return {value:status, display: status}
-                       }))
-               });
-           });
-}
     submitSummary = event => {
         event.preventDefault();
         const summary = {

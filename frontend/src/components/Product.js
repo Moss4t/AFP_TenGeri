@@ -7,9 +7,7 @@ export default class Product extends Component{
     constructor(props) {
         super(props);
         this.state = this.initialState;
-        this.state = {
-            statuses : []
-        };
+
         this.productChange = this.productChange.bind(this);
         this.submitProduct = this.submitProduct.bind(this);
     };
@@ -18,28 +16,12 @@ export default class Product extends Component{
         prodId:'', prodName: '', prodCount: '', warehouseName: ''
     };
 
-    componentDidMount() {
-        this.findAllStatus();
-    }
-
-    findAllStatus = () => {
-        axios.get("http://localhost:8081/warehouse/list")
-            .then(response => response.data)
-            .then((data) => {
-                this.setState({
-                    statuses: [{value:'', display:'SelectStatus'}]
-                        .concat(data.map(status => {
-                            return {value: status, display: status}
-                        }))
-                });
-            });
-    };
 
     submitProduct = event =>
     {
         event.preventDefault();
         const product = {
-            prodID: this.state.prodID,
+            prodId: this.state.prodId,
             prodName: this.state.prodName,
             prodCount: this.state.prodCount,
             warehouseName: this.state.warehouseName
@@ -77,7 +59,7 @@ export default class Product extends Component{
                         <Form.Control required autoComplete="off"
                                       name="prodName"
                                       type="text"
-                            value={prodName || ""}
+                                      value={prodName || ""}
                                       maxLength={40}
                                       minLenth={4}
                                       onChange={this.productChange}

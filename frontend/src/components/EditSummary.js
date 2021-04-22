@@ -13,10 +13,10 @@ export default class EditSummary extends Component{
         this.summaryChange = this.summaryChange.bind(this);
         this.updateSummary = this.updateSummary.bind(this);
     };
-    initialState = { sumId:'', ordCount:'', date:'', summary:''};
+    initialState = { id:'', sumId:'', ordCount:'', date:'', summary:''};
 
     componentDidMount() {
-        const summaryId =+ this.props.match.params.sumId;
+        const summaryId =+ this.props.match.params.id;
         if(summaryId) {
             this.findSummaryById(summaryId);
         }
