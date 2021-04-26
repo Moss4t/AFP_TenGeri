@@ -1,85 +1,97 @@
 import React, {Component} from "react";
-import {Button, Col, Form} from "react-bootstrap";
 import axios from "axios";
+import {Button, Col, Form, Jumbotron} from "react-bootstrap";
 
 
-export default class EditProduct extends Component{
+export default class EditOrder extends Component{
     constructor(props) {
         super(props);
         this.state = this.initialState;
-        this.state = {
-            statuses : []
-        };
-
+        this.productChange = this.productChange.bind(this);
+        this.updateProduct = this.updateProduct.bind(this);
     };
 
     initialState = {
-        id:'', prodID:'', prodName: '', prodCount: '', warehouseName: ''
+        id:'', prodId:'', prodName: '', prodCount: '', warehouseName: ''
     };
 
     componentDidMount() {
-        const productId =+ this.props.match.params.id;
-        if(productId) {
-            this.findProductById(productId);
-        }
+        const prodID =+ this.props.match.params.id;
+        if(prodID) {this.findProductByID(prodID);}
     }
 
-    findProductById = (productId) => {
-        axios.get("http://localhost:8081/warehouse/getProdById" +productId)
+
+    findProductByID = (prodID) => {
+        axios.get("http://localhost:8081/warehouse/getProdById/" + prodID)
             .then (response => {
                 if(response.data != null) {
-                    console.log(response.data)
-                    this.setState( {
-                        prodID: response.data.prodID,
+                    this.setState({
+                        prodId: response.data.prodId,
                         prodName: response.data.prodName,
                         prodCount: response.data.prodCount,
                         warehouseName: response.data.warehouseName
                     });
                 }
             }).catch((error) => {
-                console.log("Error - " +error);
+            console.error("Error - " + error);
         });
     };
 
-    productChange = event => {
-        this.setState({[event.target.name]:event.target.value});
+
+    productChange = event =>
+    {
+        this.setState({[event.target.name]:event.target.value });
     };
-
-
 
     updateProduct = event =>
     {
         event.preventDefault();
         const product = {
-            prodID: this.state.prodID,
+            prodId: this.state.prodId,
             prodName: this.state.prodName,
             prodCount: this.state.prodCount,
             warehouseName: this.state.warehouseName
+
         };
-        axios.put("http://localhost:8081/warehouse/updateProd" +product.prodID, product)
+        axios.put("http://localhost:8081/warehouse/updateProd/" +product.prodId ,product)
             .then(response => {
-                if(response.data != null)
+                if (response.data != null)
                 {
                     console.log(response.data)
+                    setTimeout(() => this.productList(),4000);
                 }
                 else
                 {
                     console.log("Problem!");
                 }
             });
-        this.setState(this.initialState)
-
+        this.setState(this.initialState);
     };
 
     productList = () => {
-        return this.props.history.push("/productList")
+        return this.props.history.push("/ProductList")
     }
 
-    render(){
-        const {prodName, prodCount, warehouseName} = this.state;
+    render() {
+        const {prodId, prodName, prodCount, warehouseName } = this.state;
         return(
+            <div>
+            <br/>
+            <br/>
+                <Jumbotron className="bg-light border border-dark">
             <Form onSubmit={this.updateProduct} id={"ProductForms"}>
                 <Form.Row>
+                    <Form.Group as={Col} controlId={"fromGridId"}>
+                    <Form.Label>ID</Form.Label>
+                    <Form.Control required autoComplete="off"
+                                  readOnly
+                                  name="prodId"
+                                  type="number"
+                                  value={prodId || ""}
+                                  onChange={this.productChange}
+                                  className="bg-dark text-white"
+                                  placeholder="Enter Product Name" />
+                </Form.Group>
                     <Form.Group as={Col} controlId={"formGridName"}>
                         <Form.Label>ProductName</Form.Label>
                         <Form.Control required autoComplete="off"
@@ -92,6 +104,8 @@ export default class EditProduct extends Component{
                                       className="bg-dark text-white"
                                       placeholder="Enter Product Name" />
                     </Form.Group>
+                </Form.Row>
+                <Form.Row>
                     <Form.Group as={Col} controlId={"formGridCount"}>
                         <Form.Label>Count</Form.Label>
                         <Form.Control required autoComplete="off"
@@ -104,8 +118,8 @@ export default class EditProduct extends Component{
                                       className="bg-dark text-white"
                                       placeholder="Enter Product Count" />
                     </Form.Group>
-                </Form.Row>
-                <Form.Row>
+
+
                     <Form.Group as={Col} controlId={"formGridWarehouse"}>
                         <Form.Label>Warehouse Name</Form.Label>
                         <Form.Control required autoComlete="off"
@@ -120,6 +134,7 @@ export default class EditProduct extends Component{
                     </Form.Group>
                 </Form.Row>
                 <br/>
+                <br/>
                 <Button size={"sm"} variant="success" type="submit">
                     Save
                 </Button>
@@ -128,6 +143,8 @@ export default class EditProduct extends Component{
                     Back
                 </Button>
             </Form>
+                </Jumbotron>
+            </div>
         )
     }
 }

@@ -1,6 +1,6 @@
-import {Component} from "react";
+import React, {Component} from "react";
 import axios from "axios";
-import {Button, Col, Form} from "react-bootstrap";
+import {Button, Col, Form, Jumbotron} from "react-bootstrap";
 
 
 export default class Product extends Component{
@@ -30,7 +30,7 @@ export default class Product extends Component{
             .then(response => {
                 if(response.data != null)
                 {
-                    setTimeout(() => this.productList(),3000);
+                    setTimeout(() => this.productList(),4000);
                     console.log(response.data)
                 }
                 else
@@ -52,6 +52,10 @@ export default class Product extends Component{
     render(){
         const {prodName, prodCount, warehouseName} = this.state;
         return(
+            <div>
+                <br/>
+                <br/>
+                <Jumbotron className="bg-light border border-dark">
             <Form onSubmit={this.submitProduct} id={"ProductForms"}>
                 <Form.Row>
                     <Form.Group as={Col} controlId={"formGridName"}>
@@ -78,8 +82,6 @@ export default class Product extends Component{
                                       className="bg-dark text-white"
                                       placeholder="Enter Product Count" />
                     </Form.Group>
-                </Form.Row>
-                <Form.Row>
                     <Form.Group as={Col} controlId={"formGridWarehouse"}>
                         <Form.Label>Warehouse Name</Form.Label>
                         <Form.Control required autoComlete="off"
@@ -98,6 +100,8 @@ export default class Product extends Component{
                     Save
                 </Button>
             </Form>
+                </Jumbotron>
+            </div>
         )
     }
 }

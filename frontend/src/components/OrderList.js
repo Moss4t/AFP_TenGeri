@@ -1,7 +1,10 @@
 import axios from "axios";
 import React from "react";
-import {Table} from "react-bootstrap";
+import {Button, ButtonGroup, Table} from "react-bootstrap";
 import {Link} from "react-router-dom";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faEdit} from "@fortawesome/free-solid-svg-icons";
+import {faTrash} from "@fortawesome/free-solid-svg-icons/faTrash";
 
 class OrderList extends React.Component {
 
@@ -29,6 +32,7 @@ class OrderList extends React.Component {
     deleteRow(id,e){
         axios.delete("http://localhost:8081/orders/deleteOrder/" + id)
             .then(resp => resp.data)
+        setTimeout(window.location.reload(),1000)
     }
 
     render() {
@@ -45,8 +49,8 @@ class OrderList extends React.Component {
                     <th>Date</th>
                     <th>Price</th>
                     <th>Status</th>
-                    <th>Edit</th>
-                    <th>Delete</th>
+                    <th>Actions</th>
+
                 </tr>
                 </thead>
                 <tbody>
@@ -62,8 +66,15 @@ class OrderList extends React.Component {
                             <td className={"align-middle"}>{ord.date}</td>
                             <td className={"align-middle"}>{ord.price} Ft</td>
                             <td className={"align-middle"}>{ord.status}</td>
-                            <td className={"align-middle"}><button> <Link to={"editOrder/" +ord.rendID}> Edit</Link></button></td>
-                            <td className={"align-middle"}><button onClick={(e) => this.deleteRow(ord.rendID,e)}>Delete</button></td>
+                            <td className={"align-middle"}>
+                            <ButtonGroup>
+                                <Link to={"editOrder/" +ord.rendID} className={"btn btn-sm btn-outline-info"}><FontAwesomeIcon icon={faEdit} /></Link>
+                                &nbsp;&nbsp;
+                                <Button size={"sm"} variant={"outline-danger"} onClick={(e) => this.deleteRow(ord.rendID,e)}>
+                                    <FontAwesomeIcon icon={faTrash}  />
+                                </Button>
+                            </ButtonGroup>
+                            </td>
                         </tr>
                     ))
                 }

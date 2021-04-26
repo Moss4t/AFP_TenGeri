@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import axios from "axios";
-import {Button, Col, Form} from "react-bootstrap";
+import {Button, Col, Form, Jumbotron} from "react-bootstrap";
 
 
 export default class EditOrder extends Component{
@@ -55,9 +55,6 @@ export default class EditOrder extends Component{
         });
     };
 
-    orderList = () => {
-        return this.props.history.push("/orderList")
-    }
 
     orderChange = event =>
     {
@@ -81,6 +78,7 @@ export default class EditOrder extends Component{
                 if (response.data != null)
                 {
                     console.log(response.data)
+                    setTimeout(this.orderList(),4000)
                 }
                 else
                 {
@@ -95,10 +93,24 @@ export default class EditOrder extends Component{
     }
 
     render() {
-        const {prodName, price, status, date, tableID } = this.state;
+        const {rendID,prodName, price, status, date, tableID } = this.state;
         return(
+            <div>
+                <br/>
+                <br/>
+                <Jumbotron className="bg-light border border-dark">
             <Form onSubmit={this.updateOrder} id={"OrderForms"} >
                 <Form.Row>
+                    <Form.Group as={Col} controlId={"fromGridId"}>
+                        <Form.Label>ID</Form.Label>
+                        <Form.Control required autoComplete="off"
+                                      readOnly
+                                      name="rendId"
+                                      type="number"
+                                      value={rendID || ""}
+                                      onChange={this.orderChange}
+                                      className="bg-dark text-white"/>
+                    </Form.Group>
                     <Form.Group as={Col} controlId={"formGridName"}>
                         <Form.Label>ProductName</Form.Label>
                         <Form.Control required autoComplete="off"
@@ -171,6 +183,8 @@ export default class EditOrder extends Component{
                     Back
                 </Button>
             </Form>
+                </Jumbotron>
+            </div>
         )
     }
 }

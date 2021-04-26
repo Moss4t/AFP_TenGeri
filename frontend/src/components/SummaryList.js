@@ -1,7 +1,10 @@
 import React from "react";
 import axios from "axios";
-import {Table} from "react-bootstrap";
+import {Button, ButtonGroup, Table} from "react-bootstrap";
 import {Link} from "react-router-dom";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faEdit} from "@fortawesome/free-solid-svg-icons";
+import {faTrash} from "@fortawesome/free-solid-svg-icons/faTrash";
 
 class SummaryList extends React.Component{
     constructor(props) {
@@ -26,6 +29,7 @@ class SummaryList extends React.Component{
     deleteRow(id, e){
         axios.delete("http://localhost:8081/summary/deleteSummary/" + id)
             .then(resp => resp.data)
+        setTimeout(window.location.reload(),1000)
     }
 
     render() {
@@ -39,8 +43,8 @@ class SummaryList extends React.Component{
                         <th>OrderCount</th>
                         <th>Date</th>
                         <th>Summary</th>
-                        <th>Edit</th>
-                        <th>Delete</th>
+                        <th>Actions</th>
+
                     </tr>
                     </thead>
                     <tbody>
@@ -54,8 +58,15 @@ class SummaryList extends React.Component{
                                 <td className={"align-middle"}>{sum.ordCount}</td>
                                 <td className={"align-middle"}>{sum.date}</td>
                                 <td className={"align-middle"}>{sum.summary}</td>
-                                <td className={"align-middle"}><button><Link to={"editSummary/" +sum.sumId}>Edit </Link></button></td>
-                                <td className={"align-middle"}><button onClick={(e) => this.deleteRow(sum.sumId,e)}>Delete</button></td>
+                                <td className={"align-middle"}>
+                                <ButtonGroup>
+                                    <Link to={"editSummary/" +sum.sumId} className={"btn btn-sm btn-outline-info"}><FontAwesomeIcon icon={faEdit} /></Link>
+                                    &nbsp;&nbsp;
+                                    <Button size={"sm"} variant={"outline-danger"} onClick={(e) => this.deleteRow(sum.sumId,e)}>
+                                        <FontAwesomeIcon icon={faTrash}  />
+                                    </Button>
+                                </ButtonGroup>
+                                </td>
                             </tr>
                         ))
                     }

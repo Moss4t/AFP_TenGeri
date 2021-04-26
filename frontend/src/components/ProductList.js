@@ -1,7 +1,10 @@
 import React from "react";
 import axios from "axios";
-import {Table} from "react-bootstrap";
+import {Button, ButtonGroup, Table} from "react-bootstrap";
 import {Link} from "react-router-dom";
+import {faEdit} from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faTrash} from "@fortawesome/free-solid-svg-icons/faTrash";
 
 class ProductList extends React.Component{
 
@@ -27,6 +30,12 @@ class ProductList extends React.Component{
     deleteRow(id,e){
         axios.delete("http://localhost:8081/warehouse/deleteProd/" + id)
             .then(resp => resp.data)
+        setTimeout(window.location.reload(),1000)
+
+
+    }
+    productList = () => {
+        return this.props.history.push("/productList")
     }
 
     render(){
@@ -40,8 +49,8 @@ class ProductList extends React.Component{
                         <th>ProdName</th>
                         <th>ProdCount</th>
                         <th>WarehouseName</th>
-                        <th>Edit</th>
-                        <th>Delete</th>
+                        <th>Actions</th>
+
                     </tr>
                     </thead>
                     <tbody>
@@ -55,8 +64,15 @@ class ProductList extends React.Component{
                                 <td className={"align-middle"}>{prod.prodName}</td>
                                 <td className={"align-middle"}>{prod.prodCount}</td>
                                 <td className={"align-middle"}>{prod.warehouseName}</td>
-                                <td className={"align-middle"}><button><Link to={"editProduct/" +prod.prodId}>Edit</Link></button></td>
-                                <td className={"align-middle"}><button onClick={(e) => this.deleteRow(prod.prodId,e)}>Delete</button></td>
+                                <td className={"align-middle"}>
+                                <ButtonGroup>
+                                    <Link to={"editProduct/" +prod.prodId} className={"btn btn-sm btn-outline-info"}><FontAwesomeIcon icon={faEdit} /></Link>
+                                    &nbsp;&nbsp;
+                                    <Button size={"sm"} variant={"outline-danger"} onClick={(e) => this.deleteRow(prod.prodId,e)}>
+                                        <FontAwesomeIcon icon={faTrash}  />
+                                    </Button>
+                                </ButtonGroup>
+                                </td>
                             </tr>
                         ))
                     }

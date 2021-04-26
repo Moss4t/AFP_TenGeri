@@ -1,6 +1,6 @@
-import {Component} from "react";
+import React, {Component} from "react";
 import axios from "axios";
-import {Button, Col, Form} from "react-bootstrap";
+import {Button, Col, Form, Jumbotron} from "react-bootstrap";
 
 
 export default class Summary extends Component{
@@ -23,7 +23,7 @@ export default class Summary extends Component{
         axios.post("http://localhost:8081/summary/createSummary", summary)
             .then(response => {
                 if(response.data != null){
-                    setTimeout(() => this.summaryList(),3000);
+                    setTimeout(() => this.summaryList(),4000);
                     console.log(response.data)
                 }
                 else{
@@ -44,6 +44,10 @@ export default class Summary extends Component{
     render() {
         const {ordCount, date, summary} = this.state;
         return(
+            <div>
+                <br/>
+                <br/>
+                <Jumbotron className="bg-light border border-dark">
             <Form onSubmit={this.submitSummary} id={"SummaryForms"}>
                 <Form.Row>
                     <Form.Group as={Col} controlId={"formGridOrdCount"}>
@@ -70,8 +74,6 @@ export default class Summary extends Component{
                                       className="bg-dark text-white"
                                       placeholder="Enter Date" />
                     </Form.Group>
-                </Form.Row>
-                <Form.Row>
                     <Form.Group as={Col} controlId={"formGridSummary"}>
                         <Form.Label>Summary</Form.Label>
                         <Form.Control required autoComplete="off"
@@ -90,6 +92,8 @@ export default class Summary extends Component{
                      Save
                  </Button>
             </Form>
+                </Jumbotron>
+            </div>
         )
     }
 }

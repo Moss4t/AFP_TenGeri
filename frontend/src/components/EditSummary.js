@@ -1,15 +1,12 @@
 import React, {Component} from "react";
 import axios from "axios";
-import {Button, Col, Form} from "react-bootstrap";
+import {Button, Col, Form, Jumbotron} from "react-bootstrap";
 
 
 export default class EditSummary extends Component{
     constructor(props) {
         super(props);
         this.state = this.initialState;
-        this.state = {
-            statuses : []
-        };
         this.summaryChange = this.summaryChange.bind(this);
         this.updateSummary = this.updateSummary.bind(this);
     };
@@ -54,6 +51,7 @@ export default class EditSummary extends Component{
             .then(response => {
                 if(response.data != null){
                     console.log(response.data)
+                    setTimeout(this.summaryList(),4000)
                 }
                 else{
                     console.log("Porblem!");
@@ -67,10 +65,24 @@ export default class EditSummary extends Component{
     }
 
     render() {
-        const {ordCount, date, summary} = this.state;
+        const {sumId, ordCount, date, summary} = this.state;
         return(
+            <div>
+                <br/>
+                <br/>
+                <Jumbotron className="bg-light border border-dark">
             <Form onSubmit={this.updateSummary} id={"SummaryForms"}>
                 <Form.Row>
+                    <Form.Group as={Col} controlId={"fromGridId"}>
+                        <Form.Label>ID</Form.Label>
+                        <Form.Control required autoComplete="off"
+                                      readOnly
+                                      name="rendId"
+                                      type="number"
+                                      value={sumId || ""}
+                                      onChange={this.orderChange}
+                                      className="bg-dark text-white"/>
+                    </Form.Group>
                     <Form.Group as={Col} controlId={"formGridOrdCount"}>
                         <Form.Label>OrderCount</Form.Label>
                         <Form.Control required autoComplete="off"
@@ -83,6 +95,8 @@ export default class EditSummary extends Component{
                                       className="bg-dark text-white"
                                       placeholder="Enter Order Count" />
                     </Form.Group>
+                    </Form.Row>
+                <Form.Row>
                     <Form.Group as={Col} controlId={"formGridDate"}>
                         <Form.Label>Date</Form.Label>
                         <Form.Control required autoComplete="off"
@@ -95,8 +109,6 @@ export default class EditSummary extends Component{
                                       className="bg-dark text-white"
                                       placeholder="Enter Date" />
                     </Form.Group>
-                </Form.Row>
-                <Form.Row>
                     <Form.Group as={Col} controlId={"formGridSummary"}>
                         <Form.Label>Summary</Form.Label>
                         <Form.Control required autoComplete="off"
@@ -119,6 +131,8 @@ export default class EditSummary extends Component{
                     Back
                 </Button>
             </Form>
+                </Jumbotron>
+            </div>
         )
     }
 }

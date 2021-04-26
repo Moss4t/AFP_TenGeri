@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import axios from "axios";
-import {Form, Button, Col} from "react-bootstrap";
+import {Form, Button, Col, Jumbotron} from "react-bootstrap";
 
 
 export default class Order extends Component
@@ -50,7 +50,7 @@ export default class Order extends Component
             .then(response => {
                 if (response.data != null)
                 {
-                    setTimeout(() => this.orderList(),3000);
+                    setTimeout(() => this.orderList(),4000);
                     console.log(response.data)
                 }
                 else
@@ -72,6 +72,10 @@ export default class Order extends Component
     render() {
         const {prodName, price, status, tableID, date} = this.state;
         return(
+            <div>
+                <br/>
+                <br/>
+                <Jumbotron className="bg-light border border-dark">
             <Form onSubmit={this.submitOrder} id={"OrderForms"} >
                 <Form.Row>
                     <Form.Group as={Col} controlId={"formGridName"}>
@@ -142,6 +146,8 @@ export default class Order extends Component
                     Save
                 </Button>
             </Form>
+                </Jumbotron>
+            </div>
         )
     }
 };

@@ -1,50 +1,33 @@
 import React from "react";
-import OrderList from "./OrderList";
-import {Button} from "react-bootstrap";
-import SummaryList from "./SummaryList";
-import ProductList from "./ProductList";
-import Order from "./Order";
-import Summary from "./Summary";
-import Product from "./Product";
-
+import {Jumbotron} from "react-bootstrap";
 
 export default class MainScreen extends React.Component{
 
-    constructor() {
-        super();
-        this.onClick = this.onClick.bind(this)
-        this.state = {
-            arr: [
-                {name: "OrderList", isActive: false, comp: <OrderList/>},
-                {name: "SummaryList", isActive: false, comp: <SummaryList/>},
-                {name: "ProductList", isActive: false, comp: <ProductList/>},
-                {name: "Order", isActive: false, comp: <Order/>},
-                {name: "Summary", isActive: false, comp: <Summary />},
-                {name: "Product", isActive: false, comp: <Product />}
-            ]
-        };
-    }
-
-    onClick(index) {
-        let tmp = this.state.arr;
-        tmp[index].isActive = !tmp[index].isActive;
-        this.setState({arr: tmp});
-    }
 
     render() {
         return (
-            <div>
-                {this.state.arr.map((el, index) =>
-                    <Button onClick={() => this.onClick(index)}>{el.name}</Button>
-                )}
                 <div>
-                    {
-                        this.state.arr.map((el)=>
-                            el.isActive ? el.comp : null
-                        )
-                    }
+                    <br/>
+                    <Jumbotron className="bg-dark text-white text-center ">
+                        <h2>Restaurant Manager Web application</h2>
+                        <blockquote className={"blockquote mb-0"}>
+                            <footer className="blockquote-footer">
+                                Created by: TenGeri team
+                            </footer>
+                        </blockquote>
+                    </Jumbotron>
+
+                    <Jumbotron className="bg-dark text-white text-center">
+                        <h2>Information</h2>
+                        <blockquote className={"blockquote mb-0"}>
+                            <p>
+                                Some information about the program....
+                            </p>
+                        </blockquote>
+                    </Jumbotron>
+                    <br/>
+                    <br/>
                 </div>
-            </div>
         );
     }
 }

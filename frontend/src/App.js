@@ -14,6 +14,7 @@ import Product from "./components/Product";
 import Summary from "./components/Summary";
 import EditSummary from "./components/EditSummary";
 import EditProduct from "./components/EditProduct";
+import MainScreen from "./components/MainScreen";
 
  class App extends Component {
 
@@ -26,6 +27,7 @@ import EditProduct from "./components/EditProduct";
                       <Switch>
 
                           <Route path="/OrderList" exact component={OrderList}/>
+                          <Route path="/Home" exact component={MainScreen}/>
                           <Route path="/ProductList" exact component={ProductList}/>
                           <Route path="/SummaryList" exact component={SummaryList}/>
                           <Route path="/editOrder/:id" exact component={EditOrder}/>

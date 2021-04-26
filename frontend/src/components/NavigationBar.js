@@ -1,14 +1,16 @@
 import React from "react";
 import {Navbar, Nav} from 'react-bootstrap';
 import {Link} from "react-router-dom";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faHamburger} from "@fortawesome/free-solid-svg-icons/faHamburger";
 
 class NavigationBar extends React.Component
 {
     render() {
         return(
             <Navbar bg="dark" variant="dark">
-                <Link to={"home"} className={"navbar-brand"}>
-                    Home
+                <Link to={"Home"} className={"navbar-brand"}>
+                    <FontAwesomeIcon icon={faHamburger} size={"lg"} />
                 </Link>
                 <Nav className="mr-auto">
                     <Link to={"OrderList"} className={"nav-link"}>Orders</Link>
