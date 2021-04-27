@@ -15,19 +15,20 @@ import Summary from "./components/Summary";
 import EditSummary from "./components/EditSummary";
 import EditProduct from "./components/EditProduct";
 import MainScreen from "./components/MainScreen";
+import Footer from "./components/Footer";
 
  class App extends Component {
 
     render(){
-      return(<Router>
+      return(
+          <Router>
           <NavigationBar/>
           <Container>
               <Row>
                   <Col lg={12} className={"margin-top"}>
                       <Switch>
-
                           <Route path="/OrderList" exact component={OrderList}/>
-                          <Route path="/Home" exact component={MainScreen}/>
+                          <Route path={["/Home","/"]} exact component={MainScreen}/>
                           <Route path="/ProductList" exact component={ProductList}/>
                           <Route path="/SummaryList" exact component={SummaryList}/>
                           <Route path="/editOrder/:id" exact component={EditOrder}/>
@@ -41,7 +42,7 @@ import MainScreen from "./components/MainScreen";
                   </Col>
               </Row>
           </Container>
-
+      <Footer/>
       </Router>)
       }
  }
