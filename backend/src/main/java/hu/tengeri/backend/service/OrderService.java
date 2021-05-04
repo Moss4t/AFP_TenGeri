@@ -43,4 +43,10 @@ public class OrderService {
         existingOrder.setTableID(order.getTableID());
         return orderRepository.save(existingOrder);
     }
+
+    public List<String> listProdName()
+    {
+        return orderRepository.productName();
+    }
+
 }

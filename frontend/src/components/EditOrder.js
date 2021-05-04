@@ -67,7 +67,7 @@ export default class EditOrder extends Component{
         const order = {
             prodName: this.state.prodName,
             price: this.state.price,
-            date: this.state.date,
+            //date: this.state.date,
             status: this.state.status,
             rendID: this.state.rendID,
             tableID: this.state.tableID,
@@ -99,90 +99,91 @@ export default class EditOrder extends Component{
                 <br/>
                 <br/>
                 <Jumbotron className="bg-light border border-dark">
-            <Form onSubmit={this.updateOrder} id={"OrderForms"} >
-                <Form.Row>
-                    <Form.Group as={Col} controlId={"fromGridId"}>
-                        <Form.Label>ID</Form.Label>
-                        <Form.Control required autoComplete="off"
-                                      readOnly
-                                      name="rendId"
-                                      type="number"
-                                      value={rendID || ""}
-                                      onChange={this.orderChange}
-                                      className="bg-dark text-white"/>
-                    </Form.Group>
-                    <Form.Group as={Col} controlId={"formGridName"}>
-                        <Form.Label>ProductName</Form.Label>
-                        <Form.Control required autoComplete="off"
-                                      name="prodName"
-                                      type="text"
-                                      value={prodName || ""}
-                                      maxLength={40}
-                                      minLength={4}
-                                      onChange={this.orderChange}
-                                      className="bg-dark text-white"
-                                      placeholder="Enter Product Name" />
-                    </Form.Group>
-                    <Form.Group as={Col} controlId={"formGridPrice"}>
-                        <Form.Label>Price</Form.Label>
-                        <Form.Control required autoComplete="off"
-                                      name="price"
-                                      type="number"
-                                      min={1}
-                                      max={100000}
-                                      value={price || ""}
-                                      onChange={this.orderChange}
-                                      className="bg-dark text-white"
-                                      placeholder="Enter Order Price" />
-                    </Form.Group>
-                </Form.Row>
-                <Form.Row>
-                    <Form.Group as={Col} controlId={"formGridDate"}>
-                        <Form.Label>Date</Form.Label>
-                        <Form.Control required autoComplete="off"
-                                      name="date"
-                                      type="text"
-                                      min={1}
-                                      max={20}
-                                      value={date || ""}
-                                      onChange={this.orderChange}
-                                      className="bg-dark text-white"
-                                      placeholder="Enter Date" />
-                    </Form.Group>
-                    <Form.Group as={Col} controlId={"formGridStatus"}>
-                        <Form.Label>Status</Form.Label>
-                        <Form.Control required as="select"
-                                      onChange={this.orderChange}
-                                      name="status"
-                                      value={status || ""}
-                                      className="bg-dark text-white">
-                            {this.state.statuses.map(status =>
-                                <option key={status.value} value={status.value}>
-                                    {status.display}
-                                </option>
-                            )}
-                        </Form.Control>
-                    </Form.Group>
-                    <Form.Group as={Col} controlId={"formGridTableID"} >
-                        <Form.Label>TableID</Form.Label>
-                        <Form.Control required autoComplete="off"
-                                      name="tableID"
-                                      type="number"
-                                      value={tableID || ""}
-                                      onChange={this.orderChange}
-                                      className="bg-dark text-white"
-                                      placeholder="Enter tableID" />
-                    </Form.Group>
-                </Form.Row>
-                <br/>
-                <Button size={"sm"} variant="success" type="submit">
-                    Save
-                </Button>
-                &nbsp;&nbsp;
-                <Button size={"sm"} variant="primary" type="submit" onClick={this.orderList.bind()}>
-                    Back
-                </Button>
-            </Form>
+                    <Form onSubmit={this.updateOrder} id={"OrderForms"} >
+                        <Form.Row>
+                            <Form.Group as={Col} controlId={"fromGridId"}>
+                                <Form.Label>ID</Form.Label>
+                                <Form.Control required autoComplete="off"
+                                              readOnly
+                                              name="rendId"
+                                              type="number"
+                                              value={rendID || ""}
+                                              onChange={this.orderChange}
+                                              className="bg-dark text-white"/>
+                            </Form.Group>
+                            <Form.Group as={Col} controlId={"formGridName"}>
+                                <Form.Label>ProductName</Form.Label>
+                                <Form.Control required autoComplete="off"
+                                              name="prodName"
+                                              type="text"
+                                              value={prodName || ""}
+                                              maxLength={40}
+                                              minLength={4}
+                                              onChange={this.orderChange}
+                                              className="bg-dark text-white"
+                                              placeholder="Enter Product Name" />
+                            </Form.Group>
+                            <Form.Group as={Col} controlId={"formGridPrice"}>
+                                <Form.Label>Price</Form.Label>
+                                <Form.Control required autoComplete="off"
+                                              name="price"
+                                              type="number"
+                                              min={1}
+                                              max={100000}
+                                              value={price || ""}
+                                              onChange={this.orderChange}
+                                              className="bg-dark text-white"
+                                              placeholder="Enter Order Price" />
+                            </Form.Group>
+                        </Form.Row>
+                        <Form.Row>
+                            <Form.Group as={Col} controlId={"formGridDate"}>
+                                <Form.Label>Date</Form.Label>
+                                <Form.Control required autoComplete="off"
+                                              name="date"
+                                              type="text"
+                                              readOnly
+                                              min={1}
+                                              max={20}
+                                              value={date || ""}
+                                              onChange={this.orderChange}
+                                              className="bg-dark text-white"
+                                              placeholder="Enter Date" />
+                            </Form.Group>
+                            <Form.Group as={Col} controlId={"formGridStatus"}>
+                                <Form.Label>Status</Form.Label>
+                                <Form.Control required as="select"
+                                              onChange={this.orderChange}
+                                              name="status"
+                                              value={status || ""}
+                                              className="bg-dark text-white">
+                                    {this.state.statuses.map(status =>
+                                        <option key={status.value} value={status.value}>
+                                            {status.display}
+                                        </option>
+                                    )}
+                                </Form.Control>
+                            </Form.Group>
+                            <Form.Group as={Col} controlId={"formGridTableID"} >
+                                <Form.Label>TableID</Form.Label>
+                                <Form.Control required autoComplete="off"
+                                              name="tableID"
+                                              type="number"
+                                              value={tableID || ""}
+                                              onChange={this.orderChange}
+                                              className="bg-dark text-white"
+                                              placeholder="Enter tableID" />
+                            </Form.Group>
+                        </Form.Row>
+                        <br/>
+                        <Button size={"sm"} variant="success" type="submit">
+                            Save
+                        </Button>
+                        &nbsp;&nbsp;
+                        <Button size={"sm"} variant="primary" type="submit" onClick={this.orderList.bind()}>
+                            Back
+                        </Button>
+                    </Form>
                 </Jumbotron>
             </div>
         )

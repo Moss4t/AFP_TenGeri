@@ -1,6 +1,5 @@
 package hu.tengeri.backend.controller;
 
-import com.sun.jdi.InvalidLineNumberException;
 import hu.tengeri.backend.model.Order;
 import hu.tengeri.backend.service.OrderService;
 import io.swagger.annotations.Api;
@@ -11,6 +10,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 @RestController
@@ -39,12 +40,16 @@ public class OrderController {
     @GetMapping(value = "/getOrderById/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     @ApiOperation("Get data by id from database with JSON format")
     public Order getOrderById(@PathVariable int id){
-            return orderService.getOrderById(id);
+        return orderService.getOrderById(id);
     }
 
     @PostMapping(value = "/createOrder", produces = MediaType.APPLICATION_JSON_VALUE)
     @ApiOperation("Creat data to database")
     public Order createOrder(@RequestBody Order order){
+        LocalDateTime dateTime = LocalDateTime.now(); // Gets the current date and time
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        order.setDate(dateTime.format(formatter));
+        order.setStatus("ACTIVE");
         return orderService.createOrder(order);
     }
 
@@ -55,6 +60,10 @@ public class OrderController {
         if(existingOrder == null){
             throw new NoSuchElementException();
         }
+        LocalDateTime dateTime = LocalDateTime.now(); // Gets the current date and time
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        order.setDate(dateTime.format(formatter));
+
         return orderService.updateOrder(order);
     }
 
@@ -69,5 +78,26 @@ public class OrderController {
     public ResponseEntity<Set<String>> findAllCategoryForProduct()
     {
         return new ResponseEntity<>(new TreeSet<>(Arrays.asList("ACTIVE", "CLOSED")), HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/tableID",produces = MediaType.APPLICATION_JSON_VALUE)
+    @ApiOperation("Get tableID for orders")
+    public ResponseEntity<Set<Integer>> findAlltableIDForOrder()
+    {
+        return new ResponseEntity<>(new TreeSet<>(Arrays.asList(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15)), HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/listNames",produces = MediaType.APPLICATION_JSON_VALUE)
+    @ApiOperation("Get all data from database with JSON format")
+    public List<String> getAllNames()
+    {
+        try
+        {
+            return orderService.listProdName();
+        }
+        catch (Exception e)
+        {
+            throw new NoSuchElementException(e.getMessage());
+        }
     }
 }

@@ -1,6 +1,5 @@
 import axios from "axios";
 import React from "react";
-import "../sidebar.css";
 import {Button, ButtonGroup, Table} from "react-bootstrap";
 import {Link} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
@@ -39,12 +38,6 @@ class OrderList extends React.Component {
     render() {
         return(
             <div>
-            <div class="sidenav">
-                <h2 align="center"> Title </h2>
-
-                <h2 align="center"> Végösszeg </h2>
-            </div>
-
             <div align="center">
                 <br/>
             <Table style={{width: '1000px'}} bordered hover striped variant="dark" responsive>

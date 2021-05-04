@@ -111,7 +111,7 @@ export default class EditOrder extends Component{
                         <Form.Control required autoComplete="off"
                                       name="prodCount"
                                       type="number"
-                                      min={1}
+                                      min={0}
                                       max={100000}
                                       value={prodCount || ""}
                                       onChange={this.productChange}
