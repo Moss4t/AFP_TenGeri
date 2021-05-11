@@ -49,4 +49,23 @@ public class OrderService {
         return orderRepository.productName();
     }
 
+    public void updateQuery(Integer pcount,String pname)
+    {
+        orderRepository.updateProductForOrder(pcount,pname);
+    }
+
+    public String searchNameForOrder(String pname)
+    {
+        return orderRepository.searchNameForOrder(pname);
+    }
+
+    public Integer countForOrder(String pname)
+    {
+        return orderRepository.countForOrder(pname);
+    }
+
+    public List<Order> listOrderBySearch(String searchText)
+    {
+        return orderRepository.listOrderBySearch(searchText);
+    }
 }

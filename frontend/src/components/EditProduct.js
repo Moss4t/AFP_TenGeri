@@ -1,12 +1,19 @@
 import React, {Component} from "react";
 import axios from "axios";
-import {Button, Col, Form, Jumbotron} from "react-bootstrap";
+import {Button, Card, Col, Form, Jumbotron} from "react-bootstrap";
+import MyToast from "./MyToast";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faEdit, faList, faSave} from "@fortawesome/free-solid-svg-icons";
 
 
 export default class EditOrder extends Component{
     constructor(props) {
         super(props);
         this.state = this.initialState;
+        this.state =
+            {
+                message: ''
+            }
         this.productChange = this.productChange.bind(this);
         this.updateProduct = this.updateProduct.bind(this);
     };
@@ -58,10 +65,13 @@ export default class EditOrder extends Component{
                 if (response.data != null)
                 {
                     console.log(response.data)
+                    this.setState({"show":true,"method":"post",message: response.data.message});
+                    setTimeout(() => this.setState({"show":false}),4000);
                     setTimeout(() => this.productList(),4000);
                 }
                 else
                 {
+                    this.setState({"show":false});
                     console.log("Problem!");
                 }
             });
@@ -76,10 +86,20 @@ export default class EditOrder extends Component{
         const {prodId, prodName, prodCount, warehouseName } = this.state;
         return(
             <div>
+                <div style={{"display":this.state.show ? "block" : "none"}}>
+                    <MyToast  show = {this.state.show} message = {this.state.message} type = {"success"}/>
+                </div>
             <br/>
             <br/>
-                <Jumbotron className="bg-light border border-dark">
+                <Card className="border border-dark bg-dark text-white">
+                    <Card.Header>
+                        <div style={{"float":"left"}} className="text-info">
+                            <FontAwesomeIcon icon={faEdit} /> Update Product
+                        </div>
+                    </Card.Header>
+
             <Form onSubmit={this.updateProduct} id={"ProductForms"}>
+                <Card.Body>
                 <Form.Row>
                     <Form.Group as={Col} controlId={"fromGridId"}>
                     <Form.Label>ID</Form.Label>
@@ -133,17 +153,18 @@ export default class EditOrder extends Component{
                                       placeholder="Enter Warehouse Name" />
                     </Form.Group>
                 </Form.Row>
-                <br/>
-                <br/>
-                <Button size={"sm"} variant="success" type="submit">
-                    Save
-                </Button>
-                &nbsp;&nbsp;
-                <Button size={"sm"} variant="primary" type="submit" onClick={this.productList.bind()}>
-                    Back
-                </Button>
+                </Card.Body>
+                <Card.Footer>
+                    <Button size={"sm"} variant="success" type="submit">
+                        <FontAwesomeIcon icon={faSave} />  Update
+                    </Button>
+                    &nbsp;&nbsp;
+                    <Button size={"sm"} variant="info" type="button" onClick={this.productList.bind()}>
+                        <FontAwesomeIcon icon={faList} /> Product List
+                    </Button>
+                </Card.Footer>
             </Form>
-                </Jumbotron>
+                </Card>
             </div>
         )
     }

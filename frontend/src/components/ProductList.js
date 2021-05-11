@@ -1,23 +1,52 @@
 import React from "react";
 import axios from "axios";
-import {Button, ButtonGroup, Table} from "react-bootstrap";
+import {Button, ButtonGroup, Card, FormControl, InputGroup, Table} from "react-bootstrap";
 import {Link} from "react-router-dom";
-import {faEdit} from "@fortawesome/free-solid-svg-icons";
+import {faEdit, faPlus, faSearch} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faTrash} from "@fortawesome/free-solid-svg-icons/faTrash";
+import FileSaver from "file-saver";
+import MyToast from "./MyToast";
+import {faFileExport} from "@fortawesome/free-solid-svg-icons/faFileExport";
+import {faTimes} from "@fortawesome/free-solid-svg-icons/faTimes";
 
 class ProductList extends React.Component{
 
     constructor(props) {
         super(props);
         this.state = {
-            products: []
+            products: [],
+            search:'',
+            message: ''
         }
     }
 
     componentDidMount() {
         this.findAllProduct();
     }
+
+    searchChange = event =>
+    {
+        this.setState(
+            {
+                [event.target.name]:event.target.value
+            });
+    };
+
+    cancelSearch = () =>
+    {
+        this.setState({"search" :''});
+        this.findAllProduct();
+    };
+
+    searchData = () =>
+    {
+        axios.get("http://localhost:8081/warehouse/search/"+this.state.search)
+            .then(response => response.data)
+            .then((data) => {
+                this.setState({products: data});
+            });
+    };
 
     findAllProduct(){
         axios.get("http://localhost:8081/warehouse/list")
@@ -29,20 +58,67 @@ class ProductList extends React.Component{
 
     deleteRow(id,e){
         axios.delete("http://localhost:8081/warehouse/deleteProd/" + id)
-            .then(resp => resp.data)
-        setTimeout(window.location.reload(),1000)
+            .then(response => {
+                if (response.data != null) {
+                    this.setState({"show": true, message: response.data.message});
+                    setTimeout(() => this.setState({"show": false}), 3000);
+                    setTimeout(() => this.findAllProduct(), 3000)
+                } else {
+                    this.setState({"show": false});
+                }
+
+            })
 
 
     }
+
+    exportData = () =>
+    {
+        FileSaver.saveAs(
+            "http://localhost:8081/warehouse/export"
+        );
+    }
+
     productList = () => {
         return this.props.history.push("/productList")
     }
 
     render(){
         return(
-            <div align="center">
+            <div>
+                <div style={{"display":this.state.show ? "block" : "none"}}>
+                    <MyToast show = {this.state.show} message = {this.state.message} type = {"danger"}/>
+                </div>
                 <br/>
-                <Table style={{width: '1000px'}} bordered hover striped variant="dark" responsive>
+                <br/>
+                <Card className="border border-dark bg-dark text-white">
+                    <Card.Header>
+                        <div style={{"float":"right"}}>
+                            <InputGroup size={"sm"}>
+                                <InputGroup.Append >
+                                    <Link to={"createProduct"} className={"btn btn-sm btn-outline-info"}><FontAwesomeIcon icon={faPlus}/></Link>
+                                    &nbsp;&nbsp;&nbsp;
+                                    <Button size={"sm"} variant={"outline-info"} title="Export to excel" type={"button"} onClick={this.exportData}>
+                                        <FontAwesomeIcon icon={faFileExport} />
+                                    </Button>
+                                </InputGroup.Append>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <FormControl placeholder={"Search"} name={"search"} value={this.state.search} className={"border border-info bg-dark text-white"}
+                                             onChange={this.searchChange}/>
+                                <InputGroup.Append>
+                                    <Button size={"sm"} variant={"outline-info"} type={"button"} onClick={this.searchData}>
+                                        <FontAwesomeIcon icon={faSearch} />
+                                    </Button>
+                                    &nbsp;
+                                    <Button size={"sm"} variant={"outline-danger"} type={"button"} onClick={this.cancelSearch}>
+                                        <FontAwesomeIcon icon={faTimes} />
+                                    </Button>
+                                </InputGroup.Append>
+                            </InputGroup>
+                        </div>
+                    </Card.Header>
+                    <Card.Body>
+                        <Table bordered hover striped variant="dark" responsive>
                     <thead className="text-info">
                     <tr align="center">
                         <th>ProdID</th>
@@ -56,7 +132,7 @@ class ProductList extends React.Component{
                     <tbody>
                     {this.state.products.length === 0 ?
                         <tr align="center">
-                            <td colSpan="6">No Products Available!</td>
+                            <td colSpan="5">No Products Available!</td>
                         </tr> :
                         this.state.products.map((prod) => (
                             <tr key={prod.prodId} align="center">
@@ -78,6 +154,11 @@ class ProductList extends React.Component{
                     }
                     </tbody>
                 </Table>
+                    </Card.Body>
+                    <Card.Footer></Card.Footer>
+                </Card>
+                <br/>
+                <br/>
             </div>
         )
     }

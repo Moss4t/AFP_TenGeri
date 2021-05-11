@@ -1,6 +1,7 @@
 package hu.tengeri.backend.service;
 
 import hu.tengeri.backend.dao.WarehouseRepository;
+import hu.tengeri.backend.model.Order;
 import hu.tengeri.backend.model.Warehouse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,5 +40,10 @@ public class WarehouseService {
         existingWarehouse.setProdCount(warehouse.getProdCount());
         existingWarehouse.setWarehouseName(warehouse.getWarehouseName());
         return warehouseRepository.save(existingWarehouse);
+    }
+
+    public List<Warehouse> listWarehouseBySearch(String searchText)
+    {
+        return warehouseRepository.listProductBySearch(searchText);
     }
 }

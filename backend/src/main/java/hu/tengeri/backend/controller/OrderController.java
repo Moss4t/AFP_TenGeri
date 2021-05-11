@@ -1,15 +1,21 @@
 package hu.tengeri.backend.controller;
 
+import hu.tengeri.backend.export.ExcelFileExporter;
 import hu.tengeri.backend.model.Order;
+import hu.tengeri.backend.model.ResponseMessage;
 import hu.tengeri.backend.service.OrderService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.apache.poi.util.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
@@ -45,32 +51,44 @@ public class OrderController {
 
     @PostMapping(value = "/createOrder", produces = MediaType.APPLICATION_JSON_VALUE)
     @ApiOperation("Creat data to database")
-    public Order createOrder(@RequestBody Order order){
+    public ResponseEntity<ResponseMessage>  createOrder(@RequestBody Order order){
         LocalDateTime dateTime = LocalDateTime.now(); // Gets the current date and time
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         order.setDate(dateTime.format(formatter));
         order.setStatus("ACTIVE");
-        return orderService.createOrder(order);
+        String prodName = orderService.searchNameForOrder(order.getProdName());
+        Integer currentCount = orderService.countForOrder(prodName);
+        orderService.updateQuery(currentCount - 1,prodName);
+        orderService.createOrder(order);
+        return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage("Successfully added order!"));
     }
 
     @PutMapping(value = "/updateOrder/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     @ApiOperation("Change data in database")
-    public Order updateOrder(@RequestBody Order order, @PathVariable int id){
+    public ResponseEntity<ResponseMessage> updateOrder(@RequestBody Order order, @PathVariable int id){
         Order existingOrder = orderService.getOrderById(id);
         if(existingOrder == null){
             throw new NoSuchElementException();
         }
         LocalDateTime dateTime = LocalDateTime.now(); // Gets the current date and time
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         order.setDate(dateTime.format(formatter));
+        if (!existingOrder.getProdName().equalsIgnoreCase(order.getProdName()))
+        {
+            String prodName = orderService.searchNameForOrder(order.getProdName());
+            Integer currentCount = orderService.countForOrder(prodName);
+            orderService.updateQuery(currentCount - 1,prodName);
+        }
 
-        return orderService.updateOrder(order);
+        orderService.updateOrder(order);
+        return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage("Successfully updated product!"));
     }
 
     @DeleteMapping(value = "/deleteOrder/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     @ApiOperation("Delete data from database")
-    public String deleteOrder(@PathVariable int id){
-        return orderService.deleteOrder(id);
+    public ResponseEntity<ResponseMessage> deleteOrder(@PathVariable int id){
+        orderService.deleteOrder(id);
+        return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage("Order deleted by id: " + id));
     }
 
     @GetMapping(value = "/category",produces = MediaType.APPLICATION_JSON_VALUE)
@@ -98,6 +116,28 @@ public class OrderController {
         catch (Exception e)
         {
             throw new NoSuchElementException(e.getMessage());
+        }
+    }
+
+    @GetMapping(value = "/search/{searchText}",produces = MediaType.APPLICATION_JSON_VALUE)
+    @ApiOperation("Get the order with specific searchText")
+    public ResponseEntity<List<Order>> listAllOrderBySearch(@PathVariable String searchText)
+    {
+        return new ResponseEntity<>(orderService.listOrderBySearch(searchText),HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/export")
+    @ApiOperation("Export orders")
+    public void exportOrderToExcelFile(HttpServletResponse response) throws IOException {
+        try {
+            response.setContentType("application/octet-stream");
+            response.setHeader("Content-Disposition", "attachment; filename=OrdersList_" + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd-HH:mm:ss")) + ".xlsx");
+            ByteArrayInputStream inputStream = ExcelFileExporter.exportOrderListToExcelFile((List<Order>) orderService.getAllData());
+            IOUtils.copy(inputStream, response.getOutputStream());
+        }
+        catch (IOException e)
+        {
+            throw new IOException(e.getMessage());
         }
     }
 }

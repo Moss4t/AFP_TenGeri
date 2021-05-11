@@ -15,7 +15,7 @@ public class Warehouse {
     private String prodName;
 
     @Column(name = "ProdCount")
-    private Double prodCount;
+    private Integer prodCount;
 
     @Column(name = "WarehouseName")
     private String warehouseName;
@@ -36,11 +36,11 @@ public class Warehouse {
         this.prodName = prodName;
     }
 
-    public Double getProdCount() {
+    public Integer getProdCount() {
         return prodCount;
     }
 
-    public void setProdCount(Double prodCount) {
+    public void setProdCount(Integer prodCount) {
         this.prodCount = prodCount;
     }
 
@@ -52,7 +52,7 @@ public class Warehouse {
         this.warehouseName = warehouseName;
     }
 
-    public Warehouse(String prodName, Double prodCount, String warehouseName){
+    public Warehouse(String prodName, Integer prodCount, String warehouseName){
         this.prodName = prodName;
         this.prodCount = prodCount;
         this.warehouseName = warehouseName;
