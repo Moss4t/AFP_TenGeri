@@ -1,0 +1,10 @@
+INSERT INTO `foods` (`id`, `name`, `price`) VALUES ('100', 'Hawaii Pulykamell Burgonyapürével', '2300');
+INSERT INTO `foods` (`id`, `name`, `price`) VALUES ('101', 'Orjaleves csigatésztával', '800');
+INSERT INTO `foods` (`id`, `name`, `price`) VALUES ('102', 'Húsleves májgombóccal', '800');
+INSERT INTO `foods` (`id`, `name`, `price`) VALUES ('103', 'Hideg gyümölcsleves', '700');
+INSERT INTO `foods` (`id`, `name`, `price`) VALUES ('104', 'Beefsteak tükörtojással, vegyes körettel', '4000');
+INSERT INTO `foods` (`id`, `name`, `price`) VALUES ('105', 'Nyúlfilé rántva hasábburgonyával', '2800');
+INSERT INTO `foods` (`id`, `name`, `price`) VALUES ('106', 'Bakonyi sertésszelet túrós sztrapacskával', '2500');
+INSERT INTO `foods` (`id`, `name`, `price`) VALUES ('107', 'Sajttal-sonkával töltött sertésborda vegyes körettel', '2500');
+INSERT INTO `foods` (`id`, `name`, `price`) VALUES ('108', 'Gombás natúr sertésborda vegyes körettel', '2000');
+INSERT INTO `foods` (`id`, `name`, `price`) VALUES ('109', 'Juhtúróval töltött gombafejek párolt rizzsel', '1800');
