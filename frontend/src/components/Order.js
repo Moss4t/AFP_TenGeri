@@ -16,13 +16,29 @@ export default class Order extends Component
             date : '',
             names: [],
             message:''
+            //currentPrice:''
         };
         this.orderChange = this.orderChange.bind(this);
         this.submitOrder = this.submitOrder.bind(this);
+        this.orderChangeFood = this.orderChangeFood.bind(this);
     };
 
     initialState = {
         id:'', prodName:'', price:'', rendID:'', tableID:''
+    };
+
+    findPriceByName = (name) => {
+        axios.get("http://localhost:8081/orders/price/" +name)
+            .then (response => {
+                if(response.data != null) {
+                    this.setState({
+                        price: response.data,
+
+                    });
+                }
+            }).catch((error) => {
+            console.error("Error - " + error);
+        });
     };
 
     componentDidMount() {
@@ -93,9 +109,15 @@ export default class Order extends Component
         return this.props.history.push("/orderList")
     }
 
-    orderChange = event =>
+    orderChange = event => {
+        this.setState({[event.target.name]: event.target.value});
+    }
+
+    orderChangeFood = event =>
     {
         this.setState({[event.target.name]:event.target.value });
+        this.findPriceByName([event.target.value]);
+
     };
     render() {
         const {prodName, price, tableID} = this.state;
@@ -118,15 +140,18 @@ export default class Order extends Component
                                 <Form.Group as={Col} controlId={"formGridName"}>
                                     <Form.Label>ProductName</Form.Label>
                                     <Form.Control required as="select"
-                                                  onChange={this.orderChange}
+                                                  onChange={this.orderChangeFood}
                                                   name="prodName"
                                                   value={prodName || ""}
-                                                  className="bg-dark text-white">
+                                                  className="bg-dark text-white"
+                                    >
                                         {this.state.names.map(name =>
                                             <option key={name.value} value={name.value}>
                                                 {name.display}
                                             </option>
+
                                         )}
+
                                     </Form.Control>
                                 </Form.Group>
                                 <Form.Group as={Col} controlId={"formGridPrice"}>
@@ -134,10 +159,11 @@ export default class Order extends Component
                                     <Form.Control required autoComplete="off"
                                                   name="price"
                                                   type="number"
+                                                  readOnly
                                                   min={1}
                                                   max={100000}
-                                                  value={price || ""}
-                                                  onChange={this.orderChange}
+                                                  value={price  || ""}
+                                                  onChange={this.orderChangeFood}
                                                   className="bg-dark text-white"
                                                   placeholder="Enter Order Price" />
                                 </Form.Group>

@@ -94,4 +94,18 @@ public class WarehouseController {
             throw new IOException(e.getMessage());
         }
     }
+
+    @GetMapping(value = "/listNames",produces = MediaType.APPLICATION_JSON_VALUE)
+    @ApiOperation("Get all data from database with JSON format")
+    public List<String> getAllNames()
+    {
+        try
+        {
+            return warehouseService.listFoodName();
+        }
+        catch (Exception e)
+        {
+            throw new NoSuchElementException(e.getMessage());
+        }
+    }
 }

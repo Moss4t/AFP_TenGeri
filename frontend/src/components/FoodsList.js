@@ -1,34 +1,26 @@
 import React from "react";
 import axios from "axios";
-import {Button, Card, FormControl, InputGroup, Table} from "react-bootstrap";
+import {Button, ButtonGroup, Card, FormControl, InputGroup, Table} from "react-bootstrap";
 import {Link} from "react-router-dom";
+import {faEdit, faPlus, faSearch} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faPlus, faSearch} from "@fortawesome/free-solid-svg-icons";
 import {faTrash} from "@fortawesome/free-solid-svg-icons/faTrash";
 import MyToast from "./MyToast";
-import {faFileExport} from "@fortawesome/free-solid-svg-icons/faFileExport";
 import {faTimes} from "@fortawesome/free-solid-svg-icons/faTimes";
-import FileSaver from "file-saver";
 
-class SummaryList extends React.Component{
+class FoodsList extends React.Component{
+
     constructor(props) {
         super(props);
         this.state = {
-            summaries: [],
+            foods: [],
             search:'',
             message: ''
         }
     }
 
     componentDidMount() {
-        this.findAllSummary();
-    }
-
-    exportData = () =>
-    {
-        FileSaver.saveAs(
-            "http://localhost:8081/summary/export"
-        );
+        this.findAllFood();
     }
 
     searchChange = event =>
@@ -42,57 +34,61 @@ class SummaryList extends React.Component{
     cancelSearch = () =>
     {
         this.setState({"search" :''});
-        this.findAllSummary();
+        this.findAllFood();
     };
 
     searchData = () =>
     {
-        axios.get("http://localhost:8081/summary/search/"+this.state.search)
+        axios.get("http://localhost:8081/foods/search/"+this.state.search)
             .then(response => response.data)
             .then((data) => {
-                this.setState({summaries: data});
+                this.setState({foods: data});
             });
     };
 
-    findAllSummary(){
-        axios.get("http://localhost:8081/summary/list")
+    findAllFood(){
+        axios.get("http://localhost:8081/foods/list")
             .then(response => response.data)
-            .then((data)=> {
-                this.setState({summaries:data});
+            .then((data) =>{
+                this.setState({foods: data})
             });
     }
 
-    deleteRow(id, e){
-        axios.delete("http://localhost:8081/summary/deleteSummary/" + id)
+    deleteRow(id,e){
+        axios.delete("http://localhost:8081/foods/deleteFood/" + id)
             .then(response => {
                 if (response.data != null) {
                     this.setState({"show": true, message: response.data.message});
                     setTimeout(() => this.setState({"show": false}), 3000);
-                    setTimeout(() => this.findAllSummary(), 3000)
+                    setTimeout(() => this.findAllFood(), 3000)
                 } else {
                     this.setState({"show": false});
                 }
 
             })
+
+
     }
 
-    render() {
+
+    foodList = () => {
+        return this.props.history.push("/foodsList")
+    }
+
+    render(){
         return(
             <div>
                 <div style={{"display":this.state.show ? "block" : "none"}}>
                     <MyToast show = {this.state.show} message = {this.state.message} type = {"danger"}/>
                 </div>
                 <br/>
+                <br/>
                 <Card className="border border-dark bg-dark text-white">
                     <Card.Header>
                         <div style={{"float":"right"}}>
                             <InputGroup size={"sm"}>
                                 <InputGroup.Append >
-                                    <Link to={"createSummary"} className={"btn btn-sm btn-outline-info"}><FontAwesomeIcon icon={faPlus}/></Link>
-                                    &nbsp;&nbsp;&nbsp;
-                                    <Button size={"sm"} variant={"outline-info"} title="Export to excel" type={"button"} onClick={this.exportData}>
-                                        <FontAwesomeIcon icon={faFileExport} />
-                                    </Button>
+                                    <Link to={"createFood"} className={"btn btn-sm btn-outline-info"}><FontAwesomeIcon icon={faPlus}/></Link>
                                 </InputGroup.Append>
                                 &nbsp;&nbsp;&nbsp;&nbsp;
                                 <FormControl placeholder={"Search"} name={"search"} value={this.state.search} className={"border border-info bg-dark text-white"}
@@ -111,37 +107,39 @@ class SummaryList extends React.Component{
                     </Card.Header>
                     <Card.Body>
                         <Table bordered hover striped variant="dark" responsive>
-                    <thead className="text-info">
-                    <tr align="center">
-                        <th>SumID</th>
-                        <th>OrderCount</th>
-                        <th>Date</th>
-                        <th>Summary</th>
-                        <th>Actions</th>
+                            <thead className="text-info">
+                            <tr align="center">
+                                <th>ID</th>
+                                <th>FoodName</th>
+                                <th>Price</th>
+                                <th>Actions</th>
 
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {this.state.summaries.length === 0 ?
-                        <tr align="center">
-                            <td colSpan="5"> No Summaries Available!</td>
-                        </tr> :
-                        this.state.summaries.map((sum)=> (
-                            <tr key={sum.sumId} align="center">
-                                <td className={"align-middle"}>{sum.sumId}</td>
-                                <td className={"align-middle"}>{sum.ordCount} db</td>
-                                <td className={"align-middle"}>{sum.date}</td>
-                                <td className={"align-middle"}>{sum.summary} Ft</td>
-                                <td className={"align-middle"}>
-                                    <Button size={"sm"} variant={"outline-danger"} onClick={(e) => this.deleteRow(sum.sumId,e)}>
-                                        <FontAwesomeIcon icon={faTrash}  />
-                                    </Button>
-                                </td>
                             </tr>
-                        ))
-                    }
-                    </tbody>
-                </Table>
+                            </thead>
+                            <tbody>
+                            {this.state.foods.length === 0 ?
+                                <tr align="center">
+                                    <td colSpan="4">No Foods Available!</td>
+                                </tr> :
+                                this.state.foods.map((food) => (
+                                    <tr key={food.id} align="center">
+                                        <td className={"align-middle"}>{food.id}</td>
+                                        <td className={"align-middle"}>{food.name}</td>
+                                        <td className={"align-middle"}>{food.price} Ft</td>
+                                        <td className={"align-middle"}>
+                                            <ButtonGroup>
+                                                <Link to={"editFood/" +food.id} className={"btn btn-sm btn-outline-info"}><FontAwesomeIcon icon={faEdit} /></Link>
+                                                &nbsp;&nbsp;
+                                                <Button size={"sm"} variant={"outline-danger"} onClick={(e) => this.deleteRow(food.id,e)}>
+                                                    <FontAwesomeIcon icon={faTrash}  />
+                                                </Button>
+                                            </ButtonGroup>
+                                        </td>
+                                    </tr>
+                                ))
+                            }
+                            </tbody>
+                        </Table>
                     </Card.Body>
                     <Card.Footer></Card.Footer>
                 </Card>
@@ -151,4 +149,4 @@ class SummaryList extends React.Component{
         )
     }
 }
-export default SummaryList;
+export  default FoodsList;

@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import axios from "axios";
-import {Button, Card, Col, Form, Jumbotron} from "react-bootstrap";
+import {Button, Card, Col, Form} from "react-bootstrap";
 import MyToast from "./MyToast";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEdit, faList, faSave} from "@fortawesome/free-solid-svg-icons";

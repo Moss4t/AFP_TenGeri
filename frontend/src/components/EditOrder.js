@@ -176,6 +176,7 @@ export default class EditOrder extends Component{
                                     <Form.Control required autoComplete="off"
                                                   name="price"
                                                   type="number"
+                                                  readOnly
                                                   min={1}
                                                   max={100000}
                                                   value={price || ""}

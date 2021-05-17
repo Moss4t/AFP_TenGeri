@@ -1,6 +1,7 @@
 package hu.tengeri.backend.service;
 
 import hu.tengeri.backend.dao.WarehouseRepository;
+import hu.tengeri.backend.model.Food;
 import hu.tengeri.backend.model.Order;
 import hu.tengeri.backend.model.Warehouse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,4 +47,11 @@ public class WarehouseService {
     {
         return warehouseRepository.listProductBySearch(searchText);
     }
+
+    public List<String> listFoodName()
+    {
+        return warehouseRepository.foodName();
+    }
+
+
 }

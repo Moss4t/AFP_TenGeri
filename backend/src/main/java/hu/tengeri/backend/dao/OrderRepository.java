@@ -23,6 +23,9 @@ public interface OrderRepository extends JpaRepository<Order,Integer> {
     @Query("select w.prodCount from Warehouse w where w.prodName=:pname")
     Integer countForOrder(@Param("pname") String pname);
 
+    @Query("select f.price from Food f where f.name=:pname")
+    Double foodPrice(@Param("pname") String pname);
+
     @Transactional
     @Modifying
     @Query("update Warehouse b set b.prodCount=:pcount where b.prodName=:pname")

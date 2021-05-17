@@ -1,5 +1,6 @@
 package hu.tengeri.backend.service;
 
+import hu.tengeri.backend.dao.FoodRepository;
 import hu.tengeri.backend.dao.OrderRepository;
 import hu.tengeri.backend.model.Order;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ public class OrderService {
 
     @Autowired
     OrderRepository orderRepository;
+
 
     //read
     public List<Order> getAllData()
@@ -67,5 +69,10 @@ public class OrderService {
     public List<Order> listOrderBySearch(String searchText)
     {
         return orderRepository.listOrderBySearch(searchText);
+    }
+
+    public Double foodPrice(String pname)
+    {
+        return orderRepository.foodPrice(pname);
     }
 }

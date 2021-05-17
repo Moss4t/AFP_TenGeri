@@ -14,4 +14,7 @@ public interface WarehouseRepository extends JpaRepository<Warehouse, Integer> {
 
     @Query("From Warehouse w WHERE w.prodName=:searchText OR w.prodId=:searchText OR w.warehouseName=:searchText ORDER BY w.prodId DESC")
     List<Warehouse> listProductBySearch(@Param("searchText") String searchText);
+
+    @Query("select f.name from Food f")
+    List<String> foodName();
 }

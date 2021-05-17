@@ -16,6 +16,9 @@ import EditSummary from "./components/EditSummary";
 import EditProduct from "./components/EditProduct";
 import MainScreen from "./components/MainScreen";
 import Footer from "./components/Footer";
+import FoodList from "./components/FoodsList";
+import Foods from "./components/Foods";
+import EditFood from "./components/EditFood";
 
  class App extends Component {
 
@@ -37,7 +40,9 @@ import Footer from "./components/Footer";
                           <Route path="/createOrder" exact component={Order}/>
                           <Route path="/createSummary" exact component={Summary}/>
                           <Route path="/createProduct" exact component={Product}/>
-
+                          <Route path="/foodList" exact component={FoodList}/>
+                          <Route path="/editFood/:id" exact component={EditFood}/>
+                          <Route path="/createFood" exact component={Foods}/>
                       </Switch>
                   </Col>
               </Row>

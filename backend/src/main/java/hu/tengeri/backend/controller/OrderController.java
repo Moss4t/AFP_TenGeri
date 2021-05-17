@@ -56,6 +56,8 @@ public class OrderController {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         order.setDate(dateTime.format(formatter));
         order.setStatus("ACTIVE");
+        Double price = orderService.foodPrice(order.getProdName());
+        order.setPrice(price);
         String prodName = orderService.searchNameForOrder(order.getProdName());
         Integer currentCount = orderService.countForOrder(prodName);
         orderService.updateQuery(currentCount - 1,prodName);
@@ -139,5 +141,11 @@ public class OrderController {
         {
             throw new IOException(e.getMessage());
         }
+    }
+
+    @GetMapping(value = "/price/{name}")
+    public Double foodPrice(@PathVariable String name)
+    {
+        return orderService.foodPrice(name);
     }
 }

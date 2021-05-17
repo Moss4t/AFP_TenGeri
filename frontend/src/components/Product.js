@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import axios from "axios";
-import {Button, Card, Col, Form, Jumbotron} from "react-bootstrap";
+import {Button, Card, Col, Form} from "react-bootstrap";
 import MyToast from "./MyToast";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faList, faPlusSquare, faSave} from "@fortawesome/free-solid-svg-icons";
@@ -12,16 +12,35 @@ export default class Product extends Component{
         super(props);
         this.state = this.initialState;
         this.state = {
-            message:''
+            message:'',
+            names:[]
         };
 
         this.productChange = this.productChange.bind(this);
         this.submitProduct = this.submitProduct.bind(this);
     };
 
+    componentDidMount() {
+        this.findAllNames();
+    }
+
     initialState = {
         prodId:'', prodName: '', prodCount: '', warehouseName: ''
     };
+
+    findAllNames = () => {
+        axios.get("http://localhost:8081/warehouse/listNames")
+            .then(response => response.data)
+            .then((data) => {
+                this.setState({
+                    names: [{value:'',display:'Select Food'}]
+                        .concat(data.map(name => {
+                            return {value:name, display:name}
+                        }))
+                });
+            });
+    };
+
     resetProduct = () =>
     {
         this.setState(() => this.initialState);
@@ -82,15 +101,17 @@ export default class Product extends Component{
                 <Form.Row>
                     <Form.Group as={Col} controlId={"formGridName"}>
                         <Form.Label>ProductName</Form.Label>
-                        <Form.Control required autoComplete="off"
-                                      name="prodName"
-                                      type="text"
-                                      value={prodName || ""}
-                                      maxLength={40}
-                                      minLenth={4}
+                        <Form.Control required as="select"
                                       onChange={this.productChange}
-                                      className="bg-dark text-white"
-                                      placeholder="Enter Product Name" />
+                                      name="prodName"
+                                      value={prodName || ""}
+                                      className="bg-dark text-white">
+                            {this.state.names.map(name =>
+                                <option key={name.value} value={name.value}>
+                                    {name.display}
+                                </option>
+                            )}
+                        </Form.Control>
                     </Form.Group>
                     <Form.Group as={Col} controlId={"formGridCount"}>
                         <Form.Label>Count</Form.Label>
