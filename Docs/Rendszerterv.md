@@ -72,6 +72,12 @@ Az alkalmazást kiszolgáló adatbázis a következőképpen épül fel:
 ## Teszt terv
 A tesztterv célja a webalkalmazásunk teljes átvizsgálása mind Back-end mind Front-end szintjén.
 
+| Tesztelő | Típus | Technológia |
+|----------|-------|-------------|
+| Szabó Gergely Gyula | Backend | Postman |
+| Bozsik István | Backend | IntelliJ, Webstorm |
+| Kovács Barnabás | Frontend | Webstorm |
+
 ### Alfa teszt:
 
 Az alfa tesztünk célja a korábban megalkotott összes funkció teljes körű letesztelése, még az előtt, hogy a tesztelés következő fázisára lépnénk, ahol már a tényleges felhasználó visszajelzéseiből tudunk további esetleges hibákat kiküszöbölni. Időintervallumban meghatározva ez körülbelül egy teljes hetet fog igénybe venni majd.
